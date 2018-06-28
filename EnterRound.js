@@ -20,10 +20,9 @@ export default class EnterRoundScreen extends React.Component {
                     holePar: 4,
                     onGreen: false,
                     holeFinished: false,
+                    hazard:0
     };
-    console.log(isNaN(parseInt(this.state.noOfPutts)))
-    console.log("shotsgained",sgData["T100"])
-    console.log("props",props)
+
   }
   addShots(shotObj){
     var text= this.state.text
@@ -31,7 +30,16 @@ export default class EnterRoundScreen extends React.Component {
 
     shots.push(shotObj)
     this.setState({shots: shots})
-    console.log(this.state.shots)
+  }
+  addHazard(penalty){
+    var currHazard = this.state.hazard
+    var newHazard = currHazard+penalty
+    this.setState(
+      {
+        hazard: newHazard
+      }
+    )
+    console.log("HazardESummary",this.state.hazard)
   }
   restartHole(){
     this.setState({
@@ -47,28 +55,22 @@ export default class EnterRoundScreen extends React.Component {
       noOfPutts: putts,
       puttDistance: distance
     })
-    console.log("noOfPuttsafterfinishhole",putts)
-    console.log(this.state)
   }
 
   setGreenStatus(bool){
-    console.log("setgreenstatus called")
     this.setState({onGreen: bool})
-    console.log("after method",this.state.onGreen)
   }
   renderShots() {
     var rows = []
     shots=this.state.shots
-    console.log(this.state.onGreen)
-    console.log(shots)
     if(this.state.onGreen===false&&this.state.holeFinished===false){
       for (var i=0;i<shots.length;i++){
-        rows.push(<EnterShot key= {i} finishHole={this.finishHole.bind(this)} setGreenStatus={this.setGreenStatus.bind(this)} addShots= {this.addShots.bind(this)} shotNumber= {i+1}/>)
+        rows.push(<EnterShot key= {i} finishHole={this.finishHole.bind(this)} setGreenStatus={this.setGreenStatus.bind(this)} addShots= {this.addShots.bind(this)} shotNumber= {i+1} addHazard={this.addHazard.bind(this)}/>)
       }
     }
     else{
       for (var i=0;i<shots.length-1;i++){
-        rows.push(<EnterShot key= {i} finishHole={this.finishHole.bind(this)} setGreenStatus={this.setGreenStatus.bind(this)} addShots= {this.addShots.bind(this)} shotNumber= {i+1}/>)
+        rows.push(<EnterShot key= {i} finishHole={this.finishHole.bind(this)} setGreenStatus={this.setGreenStatus.bind(this)} addShots= {this.addShots.bind(this)} shotNumber= {i+1} addHazard={this.addHazard.bind(this)}/>)
       }
     }
 
@@ -148,7 +150,7 @@ export default class EnterRoundScreen extends React.Component {
         {this.renderShots()}
 
         {this.state.onGreen ? <Putting finishHole={this.finishHole.bind(this)} /> : null}
-        {this.state.holeFinished ?  <HoleSummary navigation= {this.props.navigation} puttDistance = {this.state.puttDistance} putts={this.state.noOfPutts} shots={this.state.shots}/> : null}
+        {this.state.holeFinished ?  <HoleSummary navigation= {this.props.navigation} puttDistance = {this.state.puttDistance} putts={this.state.noOfPutts} shots={this.state.shots} hazard={this.state.hazard} holePar={this.state.holePar}/> : null}
         <TouchableHighlight
           activeOpacity={1}
           style={ this.state.restartHolePressStatus ? styles.button : styles.buttonPress }
@@ -157,14 +159,6 @@ export default class EnterRoundScreen extends React.Component {
           onPress={this.restartHole.bind(this)} >
           <Text style={ this.state.restartHolePressStatus ? styles.welcome : styles.welcomePress }>Restart Hole</Text>
         </TouchableHighlight>
-        <Button
-          title="End Round"
-          onPress={() => this.props.navigation.navigate('RoundDetails',{
-            
-          })}
-        />
-
-
       </ScrollView>
     );
   }
@@ -208,6 +202,8 @@ class EnterShot extends Component{
   saveShot(){
     var shotObj= {distance: this.state.distance, lie: this.state.lie}
     this.props.addShots(shotObj)
+    this.props.addHazard(this.state.hazard)
+    console.log("HazardEnterShot",this.state.hazard)
   }
   touchTeeLie(){
     this.setState({
@@ -266,7 +262,6 @@ class EnterShot extends Component{
 
   touchHazardPenalty(){
     this.setState({
-      hazard: 1,
       noPenaltyPressStatus: false,
       hazardPressStatus: true,
       obPressStatus:false,
@@ -274,12 +269,13 @@ class EnterShot extends Component{
       offGreenPressStatus: false,
       inHolePressStatus: false,
     })
+    this.saveShot()
+    this.props.addHazard(1)
     this.props.setGreenStatus(false)
 
   }
   touchOBPenalty(){
     this.setState({
-      hazard: 2,
       noPenaltyPressStatus: false,
       hazardPressStatus: false,
       obPressStatus:true,
@@ -287,6 +283,8 @@ class EnterShot extends Component{
       offGreenPressStatus: false,
       inHolePressStatus: false,
     })
+    this.saveShot()
+    this.props.addHazard(2)
     this.props.setGreenStatus(false)
   }
 
@@ -439,7 +437,6 @@ class Putting extends Component{
 
   onChangePutt(event){
     var value= event.nativeEvent.text
-    console.log("textvalue", parseInt(value))
     this.setState({
       putts: value
     })
@@ -486,19 +483,18 @@ class HoleSummary extends Component{
                     strokesGained: 0,
                     totalSG: 0,
                     sgArray: [],
-                    roundSummary: []
+                    roundSummary: [],
+                    drivingDistance: 0
 
 
     };
   }
   componentDidMount(){
-    var holeScore = this.props.shots.length-1 + parseInt(this.props.putts)
-    console.log(this.props.shots.length)
-    console.log(this.props.putts)
-
-    console.log(holeScore)
-    this.setState({score: holeScore, putts: this.props.putts})
+    console.log("HAZARDPROPS", this.props.hazard)
+    var holeScore = this.props.shots.length-1 + parseInt(this.props.putts) + this.props.hazard
+    var holePar=this.props.holePar
     this.calculateStrokesGained(this.props.puttDistance,this.props.putts)
+    this.setState({score: holeScore, putts: this.props.putts})
   }
   componentWillReceiveProps(nextProps){
     var holeScore = nextProps.shots.length-1 + parseInt(nextProps.putts)
@@ -511,6 +507,20 @@ class HoleSummary extends Component{
     var shots=this.state.shots
     var puttingCode = "G"+puttDistance
     var totalSG = 0.0
+    var holePar=this.props.holePar
+    if(holePar==3){
+      drivingDistance=0
+    }
+    else{
+      if(shots.length==2){
+        drivingDistance=shots[1].distance
+      }
+      else{
+        drivingDistance=shots[1].distance-shots[2].distance
+      }
+
+    }
+    this.setState({drivingDistance: drivingDistance})
     for(var i=1;i<shots.length;i++){
       if (i===shots.length-1){
         var shotCode = shots[i].lie + shots[i].distance
@@ -526,29 +536,28 @@ class HoleSummary extends Component{
       }
     }
     var puttSG = (parseFloat(sgData[puttingCode]) - parseFloat(putts)).toFixed(2)
-    console.log("puttCode",puttingCode)
-    console.log("noPutts",putts)
     sgArray.push(puttSG)
     for(var i =0; i<sgArray.length;i++){
-      console.log("sg",sgArray[i])
+
       totalSG+=parseFloat(sgArray[i])
     }
     sgArray.push(totalSG.toFixed(2))
     this.setState({
       sgArray: sgArray
     })
-    console.log("sgArray",sgArray)
     const { navigation } = this.props;
     const holeNumber = navigation.getParam('holeNumber', 1)
     const roundSummary = navigation.getParam('roundSummary', [])
     var shots = this.state.shots
-    var score= shots.length-1+parseInt(putts)
+    var score= shots.length-1+parseInt(putts)+this.props.hazard
     var holeSummary={
       score: score,
+      par: this.props.holePar,
       shots: [],
       putts: putts,
       puttingSG: sgArray[sgArray.length-2],
-      sg: sgArray[sgArray.length-1]
+      sg: sgArray[sgArray.length-1],
+      drivingDistance: drivingDistance
     }
     for(var i=0;i<sgArray.length-2;i++){
       holeSummary.shots.push({
@@ -556,28 +565,29 @@ class HoleSummary extends Component{
         distance: this.state.shots[i+1].distance,
         sg: sgArray[i]
       })
-      
+
     }
 
-    console.log("holeSummary",holeSummary)
+
     roundSummary.push(holeSummary)
-    console.log("roundSUmmary",roundSummary) 
+
     this.setState({
       roundSummary: roundSummary
     })
   }
 
   renderStrokesGained() {
+
     var rows = []
     var shots = this.state.shots
     var sgArray=this.state.sgArray
 
     for(var i=0;i<sgArray.length-2;i++){
       rows.push(<Text key={i} style={styles.baseText}>Shot {i+1} {shots[i+1].lie}{shots[i+1].distance} SG: {sgArray[i]}</Text>)
-      
+
     }
 
-
+    rows.push(<Text key={"DrivingDistance"} style={styles.baseText}>Driving Distance = {this.state.drivingDistance}</Text>)
     rows.push(<Text key={"PuttingSG"} style={styles.baseText}>Putting G{this.state.puttDistance} {this.state.putts}putt SG: {sgArray[sgArray.length-2]}</Text>)
     rows.push(<Text key={"TotalSG"}style={styles.baseText}>Total SG: {sgArray[sgArray.length-1]}</Text>)
 
@@ -596,7 +606,7 @@ class HoleSummary extends Component{
   render(){
     const { navigation } = this.props;
     const holeNumber = navigation.getParam('holeNumber', 1)
-    
+
     return(
       <View style={styles.holeSummaryContainer}>
         <Text style={styles.baseText}>
