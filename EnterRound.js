@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput, Text, ScrollView, View,StyleSheet,TouchableHighlight, Button } from 'react-native';
+import { TextInput, Text, ScrollView, View,StyleSheet,TouchableHighlight,TouchableOpacity, Button,KeyboardAvoidingView } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import {sgData} from './data/sgData'
 
@@ -122,6 +122,8 @@ export default class EnterRoundScreen extends React.Component {
     const { navigation } = this.props;
     const holeNumber = navigation.getParam('holeNumber', 1)
     return (
+      <View style={StyleSheet.absoluteFill}>
+      <KeyboardAvoidingView style={StyleSheet.absoluteFill} behavior="padding" enabled>
       <ScrollView style={styles.scrollViewContainer}>
         <Text style={styles.baseText}>
           Hole {JSON.stringify(holeNumber)}
@@ -160,6 +162,8 @@ export default class EnterRoundScreen extends React.Component {
           <Text style={ this.state.restartHolePressStatus ? styles.welcome : styles.welcomePress }>Restart Hole</Text>
         </TouchableHighlight>
       </ScrollView>
+      </KeyboardAvoidingView>
+      </View>
     );
   }
 }
@@ -342,6 +346,7 @@ class EnterShot extends Component{
         style={styles.textInput}
         onChangeText={(distance) => this.setState({distance})}
         value={this.state.distance}
+        keyboardType='numeric'
       />
       <Text style={styles.baseText}>
 
@@ -456,6 +461,7 @@ class Putting extends Component{
           style={styles.textInput}
           onChangeText={(distance) => this.setState({distance})}
           value={this.state.distance}
+          keyboardType='numeric'
         />
         <Text style={styles.baseText}>
           Number of Putts
@@ -464,6 +470,7 @@ class Putting extends Component{
           style={styles.textInput}
           onChange={this.onChangePutt.bind(this)}
           value={this.state.putts}
+          keyboardType='numeric'
 
 
         />
@@ -618,19 +625,25 @@ class HoleSummary extends Component{
           Score: {this.state.score}
         </Text>
         {this.renderStrokesGained()}
-        <Button
-          title="Next Hole"
-          onPress={() => this.props.navigation.push('EnterRound',{
-            holeNumber: holeNumber+1,
-            roundSummary: this.state.roundSummary
-          })}
-        />
-        <Button
-          title="End Round"
-          onPress={() => this.props.navigation.push('RoundDetails',{
-            roundSummary: this.state.roundSummary
-          })}
-        />
+        <TouchableOpacity
+         style={styles.buttonPress}
+         onPress={() => this.props.navigation.push('EnterRound',{
+           holeNumber: holeNumber+1,
+           roundSummary: this.state.roundSummary
+         })}
+        >
+          <Text style={styles.welcomePress}>Next Hole</Text>
+        </TouchableOpacity>
+        <View style={{marginTop: 10}}>
+        <TouchableOpacity
+         style={styles.buttonPress}
+         onPress={() => this.props.navigation.push('RoundDetails',{
+           roundSummary: this.state.roundSummary
+         })}
+        >
+          <Text style={styles.welcomePress}>End Round</Text>
+        </TouchableOpacity>
+        </View>
       </View>
     )
   }
@@ -725,6 +738,6 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 1,
     borderColor:'#000',
-    padding: 10
+    padding: 10,
   }
 });
