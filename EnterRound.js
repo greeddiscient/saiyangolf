@@ -635,14 +635,14 @@ class HoleSummary extends Component{
           <Text style={styles.welcomePress}>Next Hole</Text>
         </TouchableOpacity>
         <View style={{marginTop: 10}}>
-        <TouchableOpacity
-         style={styles.buttonPress}
-         onPress={() => this.props.navigation.push('RoundDetails',{
-           roundSummary: this.state.roundSummary
-         })}
-        >
-          <Text style={styles.welcomePress}>End Round</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+           style={styles.buttonPress}
+           onPress={() => this.props.navigation.push('RoundDetails',{
+             roundSummary: this.state.roundSummary
+           })}
+          >
+            <Text style={styles.welcomePress}>End Round</Text>
+          </TouchableOpacity>
         </View>
       </View>
     )
@@ -739,5 +739,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor:'#000',
     padding: 10,
+    paddingBottom: 100
   }
 });

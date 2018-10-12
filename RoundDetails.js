@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { TextInput, Text, ScrollView, View,StyleSheet,TouchableHighlight, Button } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import {sgData} from './data/sgData'
+import axios from 'axios';
 
 export default class RoundDetailsScreen extends React.Component {
   static navigationOptions = {
@@ -172,6 +173,30 @@ export default class RoundDetailsScreen extends React.Component {
       drivingDistance: averageDrivingDistance
     })
   }
+  saveRound(){
+    // this.props.navigation.navigate('EnterRound')
+    console.log("saveRoundPressed")
+    that=this
+    axios.post('http://saiyan-api.herokuapp.com/api/new_round', {
+      drivingDistance: this.state.drivingDistance,
+      totalPutts: this.state.totalPutts,
+      gir: this.state.gir,
+      fairways: this.state.fairways,
+      drivingSG: this.state.drivingSG,
+      approachSG: this.state.approachSG,
+      wedgeSG: this.state.wedgeSG,
+      chippingSG: this.state.chippingSG,
+      totalPuttingSG: this.state.totalPuttingSG,
+      totalSG: this.state.totalSG
+    })
+    .then(function (response) {
+      console.log(response);
+      that.props.navigation.navigate('Home')
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
   render() {
     const { navigation } = this.props;
     const roundSummary = navigation.getParam('roundSummary', [])
@@ -193,13 +218,20 @@ export default class RoundDetailsScreen extends React.Component {
     rows.push(<Text style={{fontWeight:'bold'}}>Fairways= {this.state.fairways}</Text>)
     rows.push(<Text style={{fontWeight:'bold'}}>Driving SG= {this.state.drivingSG}</Text>)
     rows.push(<Text style={{fontWeight:'bold'}}>Approach SG= {this.state.approachSG}</Text>)
+    rows.push(<Text style={{fontWeight:'bold'}}>Wedge SG= {this.state.wedgeSG}</Text>)
     rows.push(<Text style={{fontWeight:'bold'}}>Chipping SG= {this.state.chippingSG}</Text>)
     rows.push(<Text style={{fontWeight:'bold'}}>Putting SG= {this.state.totalPuttingSG}</Text>)
     rows.push(<Text style={{fontWeight:'bold'}}>Total SG= {this.state.totalSG}</Text>)
+    rows.push(<Button
+      title="Save Round"
+      onPress={this.saveRound.bind(this)}
+    />)
+    
+    
     console.log(this.props)
 
     return (
-      <ScrollView style={{flex: 1, borderWidth: 1,borderColor:'#000',padding: 10}}>
+      <ScrollView style={{flex: 1, borderWidth: 1,borderColor:'#000',padding: 10, paddingBottom: 100}}>
         {rows}
       </ScrollView>
     );

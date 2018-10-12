@@ -3,6 +3,7 @@ import { View, Text, Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import EnterRoundScreen from "./EnterRound.js"
 import RoundDetailsScreen from "./RoundDetails.js"
+import RoundHistoryScreen from "./RoundHistory.js"
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -15,6 +16,10 @@ class HomeScreen extends React.Component {
           title="Enter a New Round"
           onPress={() => this.props.navigation.navigate('EnterRound')}
         />
+        <Button
+          title="Round History"
+          onPress={() => this.props.navigation.navigate('RoundHistory')}
+        />
       </View>
     );
   }
@@ -25,7 +30,8 @@ const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
     EnterRound: EnterRoundScreen,
-    RoundDetails: RoundDetailsScreen
+    RoundDetails: RoundDetailsScreen,
+    RoundHistory: RoundHistoryScreen
   },
   {
     initialRouteName: 'Home',
