@@ -500,7 +500,8 @@ class HoleSummary extends Component{
                     totalSG: 0,
                     sgArray: [],
                     roundSummary: [],
-                    drivingDistance: 0
+                    drivingDistance: 0,
+                    holeSummary: []
 
 
     };
@@ -585,10 +586,10 @@ class HoleSummary extends Component{
     }
 
 
-    roundSummary.push(holeSummary)
 
     this.setState({
-      roundSummary: roundSummary
+      roundSummary: roundSummary,
+      holeSummary: holeSummary
     })
   }
 
@@ -618,7 +619,35 @@ class HoleSummary extends Component{
         return null;
     }
   }
-
+  nextHole(){
+    const { navigation } = this.props;
+    const holeNumber = navigation.getParam('holeNumber', 1)
+    roundSummary=this.state.roundSummary
+    holeSummary= this.state.holeSummary
+    roundSummary.push(holeSummary)
+    this.setState({
+      roundSummary: roundSummary
+    })
+    console.log("roundSummaryNextHole", this.state.roundSummary)
+    this.props.navigation.push('EnterRound',{
+      holeNumber: holeNumber+1,
+      roundSummary: this.state.roundSummary
+    })
+  }
+  endRound(){
+    const { navigation } = this.props;
+    const holeNumber = navigation.getParam('holeNumber', 1)
+    roundSummary=this.state.roundSummary
+    holeSummary= this.state.holeSummary
+    roundSummary.push(holeSummary)
+    this.setState({
+      roundSummary: roundSummary
+    })
+    console.log("roundSummaryEndRound", this.state.roundSummary)
+    this.props.navigation.push('RoundDetails',{
+      roundSummary: this.state.roundSummary
+    })
+  }
   render(){
     const { navigation } = this.props;
     const holeNumber = navigation.getParam('holeNumber', 1)
@@ -636,19 +665,14 @@ class HoleSummary extends Component{
         {this.renderStrokesGained()}
         <TouchableOpacity
          style={styles.buttonPress}
-         onPress={() => this.props.navigation.push('EnterRound',{
-           holeNumber: holeNumber+1,
-           roundSummary: this.state.roundSummary
-         })}
+         onPress={this.nextHole.bind(this)}
         >
           <Text style={styles.welcomePress}>Next Hole</Text>
         </TouchableOpacity>
         <View style={{marginTop: 10}}>
           <TouchableOpacity
            style={styles.buttonPress}
-           onPress={() => this.props.navigation.push('RoundDetails',{
-             roundSummary: this.state.roundSummary
-           })}
+           onPress={this.endRound.bind(this) }
           >
             <Text style={styles.welcomePress}>End Round</Text>
           </TouchableOpacity>
