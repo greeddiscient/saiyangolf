@@ -445,8 +445,11 @@ class Putting extends Component{
     this.setState({
       putts: value
     })
-    this.props.finishHole(this.state.distance, value)
 
+
+  }
+  finishPutt(){
+    this.props.finishHole(this.state.distance, this.state.putts)
   }
   render(){
     return(
@@ -471,9 +474,15 @@ class Putting extends Component{
           onChange={this.onChangePutt.bind(this)}
           value={this.state.putts}
           keyboardType='numeric'
-
-
         />
+        <View style={{marginTop: 10}}>
+          <TouchableOpacity
+           style={styles.buttonPress}
+           onPress={this.finishPutt.bind(this)}
+          >
+            <Text style={styles.welcomePress}>Finish Hole</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }

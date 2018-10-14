@@ -12,14 +12,18 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View >
         <Button
           title="Enter a New Round"
           onPress={() => this.props.navigation.navigate('EnterRound')}
         />
+        </View>
+        <View style={{marginTop: 20}}>
         <Button
           title="Round History"
           onPress={() => this.props.navigation.navigate('RoundHistory')}
         />
+        </View>
       </View>
     );
   }
