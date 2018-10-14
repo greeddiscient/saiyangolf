@@ -63,7 +63,10 @@ export default class RoundDetailsScreen extends React.Component {
     const roundSummary = navigation.getParam('roundSummary', [])
     var fairways=0
     for(var i=0;i<roundSummary.length;i++){
-      if(roundSummary[i].par==4 && roundSummary[i].shots[1].lie=="F"){
+      if(roundSummary[i].par==4 && roundSummary[i].shots.length==1){
+        fairways+=1
+      }
+      else if(roundSummary[i].par==4 && roundSummary[i].shots[1].lie=="F"){
         fairways+=1
       }
       else if(roundSummary[i].par==5 && roundSummary[i].shots[1].lie=="F"){
