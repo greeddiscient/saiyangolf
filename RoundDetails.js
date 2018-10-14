@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { TextInput, Text, ScrollView, View,StyleSheet,TouchableHighlight, Button } from 'react-native';
+import { TextInput, Text, ScrollView, View, StyleSheet,TouchableHighlight,TouchableOpacity, Button } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import {sgData} from './data/sgData'
 import axios from 'axios';
+import Modal from 'react-native-modal'
+import moment from 'moment'
 
 export default class RoundDetailsScreen extends React.Component {
   static navigationOptions = {
@@ -20,7 +22,9 @@ export default class RoundDetailsScreen extends React.Component {
       totalPuttingSG: 0,
       wedgeSG: 0,
       gir: 0,
-      fairways: 0
+      fairways: 0,
+      courseName: '',
+      roundDate:''
     };
   }
   componentDidMount(){
@@ -32,6 +36,10 @@ export default class RoundDetailsScreen extends React.Component {
     this.calculatePuttsCountSGTotalSG()
     this.calculateGIR()
     this.calculateFairways()
+    var date =moment().format("MMM Do YYYY")
+    this.setState({
+      roundDate: date
+    })
   }
   calculateGIR(){
     const { navigation } = this.props;
@@ -176,7 +184,7 @@ export default class RoundDetailsScreen extends React.Component {
       drivingDistance: averageDrivingDistance
     })
   }
-  saveRound(){
+  saveAPI(){
     // this.props.navigation.navigate('EnterRound')
     const { navigation } = this.props;
     const roundSummary = navigation.getParam('roundSummary', [])
@@ -193,7 +201,9 @@ export default class RoundDetailsScreen extends React.Component {
       chippingSG: this.state.chippingSG,
       totalPuttingSG: this.state.totalPuttingSG,
       totalSG: this.state.totalSG,
-      roundSummary: roundSummary
+      roundSummary: roundSummary,
+      courseName: this.state.courseName,
+      roundDate: this.state.roundDate
     })
     .then(function (response) {
       console.log(response);
@@ -203,9 +213,22 @@ export default class RoundDetailsScreen extends React.Component {
       console.log(error);
     });
   }
+  saveRound(){
+    this.setState({isModalVisible: true})
+  }
+  _toggleModal = () =>
+    this.setState({ isModalVisible: !this.state.isModalVisible });
+
+  onChangeCourseName(event){
+    var value= event.nativeEvent.text
+    this.setState({
+      courseName: value
+    })
+  }
   render() {
     const { navigation } = this.props;
     const roundSummary = navigation.getParam('roundSummary', [])
+
     var rows=[]
     for(var i=0;i<roundSummary.length;i++){
       rows.push(<Text style={{fontWeight:'bold'}}>Hole {i+1}</Text>)
@@ -218,6 +241,7 @@ export default class RoundDetailsScreen extends React.Component {
       rows.push(<Text style={{fontWeight:'bold'}}>PuttingSG={roundSummary[i].puttingSG}</Text>)
       rows.push(<Text style={{fontWeight:'bold'}}>TotalSG={roundSummary[i].sg}</Text>)
     }
+    rows.push(<Text >Round Summary</Text>)
     rows.push(<Text style={{fontWeight:'bold'}}>Driving Distance= {this.state.drivingDistance}</Text>)
     rows.push(<Text style={{fontWeight:'bold'}}>No of Putts= {this.state.totalPutts}</Text>)
     rows.push(<Text style={{fontWeight:'bold'}}>GIR= {this.state.gir}</Text>)
@@ -239,7 +263,63 @@ export default class RoundDetailsScreen extends React.Component {
     return (
       <ScrollView style={{flex: 1, borderWidth: 1,borderColor:'#000',padding: 10, paddingBottom: 100}}>
         {rows}
+        <Modal
+          backdropColor={"white"}
+          backdropOpacity={1}
+          style={styles.container}
+          isVisible={this.state.isModalVisible}
+          onBackdropPress={() => this.setState({ isModalVisible: false })}
+        >
+          <View style={styles.modalContent}>
+            <Text>{this.state.roundDate}</Text>
+            <Text>Course Name:</Text>
+            <TextInput
+              style={{
+                height: 30,
+                width: 200,
+                borderColor: '#000066',
+                borderWidth: 1.5
+              }}
+              onChange={this.onChangeCourseName.bind(this)}
+              value={this.state.courseName}
+            />
+            <TouchableOpacity
+              style= {styles.buttonPress}
+              onPress={this.saveAPI.bind(this)}
+            >
+              <Text style={styles.welcomePress}>Save Round</Text>
+            </TouchableOpacity>
+          </View>
+        </Modal>
       </ScrollView>
     );
   }
 }
+
+const styles=StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  modalContent: {
+    backgroundColor: "white",
+    padding: 22,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 4,
+    borderColor: "rgba(0, 0, 0, 0.1)"
+  },
+  buttonPress: {
+    borderColor: '#000066',
+    backgroundColor: '#000066',
+    borderWidth: 1,
+    borderRadius: 10,
+  },
+  welcomePress: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+    color: '#ffffff'
+  }
+})

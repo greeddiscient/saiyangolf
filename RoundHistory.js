@@ -47,6 +47,7 @@ export default class RoundHistoryScreen extends React.Component {
     console.log(rounds)
     for(var i=0;i<rounds.length;i++){
       rows.push(<Text >Round {i+1}</Text>)
+      rows.push(<Text >{rounds[i].courseName} {rounds[i].roundDate}</Text>)
       rows.push(<Text style={{fontWeight:'bold'}}>Driving Distance= {rounds[i].drivingDistance}</Text>)
       rows.push(<Text style={{fontWeight:'bold'}}>No of Putts= {rounds[i].totalPutts}</Text>)
       rows.push(<Text style={{fontWeight:'bold'}}>GIR= {rounds[i].gir}</Text>)
@@ -67,7 +68,7 @@ export default class RoundHistoryScreen extends React.Component {
         <Text style={{fontSize: 20,
         textAlign: 'center',
         margin: 10,
-        color: '#ffffff'}}>View Details</Text>
+        color: '#ffffff'}}>View Round Details</Text>
       </TouchableOpacity>)
     }
     return (

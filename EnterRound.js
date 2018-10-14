@@ -3,6 +3,7 @@ import { TextInput, Text, ScrollView, View,StyleSheet,TouchableHighlight,Touchab
 import { List, ListItem } from 'react-native-elements';
 import {sgData} from './data/sgData'
 
+
 export default class EnterRoundScreen extends React.Component {
   static navigationOptions = {
     title: 'Enter Round',
@@ -20,7 +21,8 @@ export default class EnterRoundScreen extends React.Component {
                     holePar: 4,
                     onGreen: false,
                     holeFinished: false,
-                    hazard:0
+                    hazard:0,
+                    isModalVisible: false
     };
 
   }
@@ -501,7 +503,9 @@ class HoleSummary extends Component{
                     sgArray: [],
                     roundSummary: [],
                     drivingDistance: 0,
-                    holeSummary: []
+                    holeSummary: [],
+                    isModalVisible: false,
+                    courseName: ''
 
 
     };
@@ -648,6 +652,7 @@ class HoleSummary extends Component{
       roundSummary: this.state.roundSummary
     })
   }
+
   render(){
     const { navigation } = this.props;
     const holeNumber = navigation.getParam('holeNumber', 1)
@@ -677,6 +682,7 @@ class HoleSummary extends Component{
             <Text style={styles.welcomePress}>End Round</Text>
           </TouchableOpacity>
         </View>
+
       </View>
     )
   }

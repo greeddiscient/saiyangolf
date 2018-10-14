@@ -41,6 +41,7 @@ export default class RoundHistoryDetailsScreen extends React.Component {
       rows.push(<Text style={{fontWeight:'bold'}}>PuttingSG={roundSummary[i].puttingSG}</Text>)
       rows.push(<Text style={{fontWeight:'bold'}}>TotalSG={roundSummary[i].sg}</Text>)
     }
+    rows.push(<Text >Round Summary</Text>)
     rows.push(<Text style={{fontWeight:'bold'}}>Driving Distance= {round.drivingDistance}</Text>)
     rows.push(<Text style={{fontWeight:'bold'}}>No of Putts= {round.totalPutts}</Text>)
     rows.push(<Text style={{fontWeight:'bold'}}>GIR= {round.gir}</Text>)
