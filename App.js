@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation';
 import EnterRoundScreen from "./EnterRound.js"
 import RoundDetailsScreen from "./RoundDetails.js"
 import RoundHistoryScreen from "./RoundHistory.js"
+import RoundHistoryDetailsScreen from "./RoundHistoryDetails.js"
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -35,7 +36,8 @@ const RootStack = createStackNavigator(
     Home: HomeScreen,
     EnterRound: EnterRoundScreen,
     RoundDetails: RoundDetailsScreen,
-    RoundHistory: RoundHistoryScreen
+    RoundHistory: RoundHistoryScreen,
+    RoundHistoryDetails: RoundHistoryDetailsScreen
   },
   {
     initialRouteName: 'Home',

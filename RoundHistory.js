@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput, Text, ScrollView, View,StyleSheet,TouchableHighlight, Button } from 'react-native';
+import { TextInput, Text, ScrollView, View,StyleSheet,TouchableHighlight, TouchableOpacity, Button } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import {sgData} from './data/sgData'
 import axios from 'axios';
@@ -34,6 +34,13 @@ export default class RoundHistoryScreen extends React.Component {
       console.log(error);
     })
   }
+  getRoundDetails(id){
+    console.log(id)
+    var rounds=this.state.rounds
+    this.props.navigation.navigate('RoundHistoryDetails',{
+      round: rounds[id]
+    })
+  }
   render() {
     var rows=[]
     var rounds=this.state.rounds
@@ -50,6 +57,18 @@ export default class RoundHistoryScreen extends React.Component {
       rows.push(<Text style={{fontWeight:'bold'}}>Chipping SG= {rounds[i].chippingSG}</Text>)
       rows.push(<Text style={{fontWeight:'bold'}}>Putting SG= {rounds[i].totalPuttingSG}</Text>)
       rows.push(<Text style={{fontWeight:'bold'}}>Total SG= {rounds[i].totalSG}</Text>)
+      rows.push(<TouchableOpacity
+        style={{borderColor: '#000066',
+        backgroundColor: '#000066',
+        borderWidth: 1,
+        borderRadius: 10}}
+        onPress={this.getRoundDetails.bind(this, i)}
+      >
+        <Text style={{fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+        color: '#ffffff'}}>View Details</Text>
+      </TouchableOpacity>)
     }
     return (
       <ScrollView style={{flex: 1, borderWidth: 1,borderColor:'#000',padding: 10, paddingBottom: 100}}>

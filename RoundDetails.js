@@ -75,6 +75,8 @@ export default class RoundDetailsScreen extends React.Component {
       totalPuttingSG+=parseFloat(roundSummary[i].puttingSG)
       totalSG+=parseFloat(roundSummary[i].sg)
     }
+    totalPuttingSG=totalPuttingSG.toFixed(2)
+    totalSG=totalSG.toFixed(2)
     this.setState({
       totalPutts: totalPutts,
       totalPuttingSG: totalPuttingSG,
@@ -93,7 +95,7 @@ export default class RoundDetailsScreen extends React.Component {
         drivingSG =drivingSG + parseFloat(roundSummary[i].shots[0].sg)
       }
     }
-
+    drivingSG=drivingSG.toFixed(2)
     this.setState({
       drivingSG: drivingSG
     })
@@ -110,7 +112,7 @@ export default class RoundDetailsScreen extends React.Component {
         }
       }
     }
-
+    wedgeSG=wedgeSG.toFixed(2)
     this.setState({
       wedgeSG: wedgeSG
     })
@@ -127,7 +129,7 @@ export default class RoundDetailsScreen extends React.Component {
         }
       }
     }
-
+    chippingSG=chippingSG.toFixed(2)
     this.setState({
       chippingSG: chippingSG
     })
@@ -149,7 +151,7 @@ export default class RoundDetailsScreen extends React.Component {
       }
 
     }
-
+    approachSG=approachSG.toFixed(2)
     this.setState({
       approachSG: approachSG
     })
@@ -169,12 +171,15 @@ export default class RoundDetailsScreen extends React.Component {
       }
     }
     averageDrivingDistance= totalDrivingDistance/count
+    averageDrivingDistance=averageDrivingDistance.toFixed(2)
     this.setState({
       drivingDistance: averageDrivingDistance
     })
   }
   saveRound(){
     // this.props.navigation.navigate('EnterRound')
+    const { navigation } = this.props;
+    const roundSummary = navigation.getParam('roundSummary', [])
     console.log("saveRoundPressed")
     that=this
     axios.post('http://saiyan-api.herokuapp.com/api/new_round', {
@@ -187,7 +192,8 @@ export default class RoundDetailsScreen extends React.Component {
       wedgeSG: this.state.wedgeSG,
       chippingSG: this.state.chippingSG,
       totalPuttingSG: this.state.totalPuttingSG,
-      totalSG: this.state.totalSG
+      totalSG: this.state.totalSG,
+      roundSummary: roundSummary
     })
     .then(function (response) {
       console.log(response);
@@ -207,10 +213,10 @@ export default class RoundDetailsScreen extends React.Component {
         rows.push(<Text style={{fontWeight:'bold'}}>Shot {j+1}</Text>)
         rows.push(<Text >{roundSummary[i].shots[j].distance}{roundSummary[i].shots[j].lie} SG={roundSummary[i].shots[j].sg}</Text>)
       }
-      rows.push(<Text >Score={roundSummary[i].score}</Text>)
-      rows.push(<Text >Putts={roundSummary[i].putts}</Text>)
-      rows.push(<Text >PuttingSG={roundSummary[i].puttingSG}</Text>)
-      rows.push(<Text >TotalSG={roundSummary[i].sg}</Text>)
+      rows.push(<Text style={{fontWeight:'bold'}}>Score={roundSummary[i].score}</Text>)
+      rows.push(<Text style={{fontWeight:'bold'}}>Putts={roundSummary[i].putts}</Text>)
+      rows.push(<Text style={{fontWeight:'bold'}}>PuttingSG={roundSummary[i].puttingSG}</Text>)
+      rows.push(<Text style={{fontWeight:'bold'}}>TotalSG={roundSummary[i].sg}</Text>)
     }
     rows.push(<Text style={{fontWeight:'bold'}}>Driving Distance= {this.state.drivingDistance}</Text>)
     rows.push(<Text style={{fontWeight:'bold'}}>No of Putts= {this.state.totalPutts}</Text>)
@@ -226,8 +232,8 @@ export default class RoundDetailsScreen extends React.Component {
       title="Save Round"
       onPress={this.saveRound.bind(this)}
     />)
-    
-    
+
+
     console.log(this.props)
 
     return (
