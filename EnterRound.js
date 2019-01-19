@@ -48,7 +48,8 @@ export default class EnterRoundScreen extends React.Component {
       shots: ['1'],
       noOfPutts:'',
       onGreen: false,
-      holeFinished: false
+      holeFinished: false,
+      hazard: 0
     })
   }
   finishHole(distance,putts){
@@ -181,6 +182,7 @@ class EnterShot extends Component{
                     sandPressStatus: false,
                     recoveryPressStatus: false,
                     hazard: 0,
+                    shotHazard:0,
                     hazardPressStatus: false,
                     obPressStatus:false,
                     inHolePressStatus:false,
@@ -205,11 +207,11 @@ class EnterShot extends Component{
     }
   }
 
-  saveShot(){
-    var shotObj= {distance: this.state.distance, lie: this.state.lie}
+  saveShot(hazard){
+    var shotObj= {distance: this.state.distance, lie: this.state.lie, hazard: hazard}
+    console.log("shotobj",shotObj)
     this.props.addShots(shotObj)
     this.props.addHazard(this.state.hazard)
-    console.log("HazardEnterShot",this.state.hazard)
   }
   touchTeeLie(){
     this.setState({
@@ -274,8 +276,9 @@ class EnterShot extends Component{
       onGreenPressStatus: false,
       offGreenPressStatus: false,
       inHolePressStatus: false,
+      shotHazard: 1
     })
-    this.saveShot()
+    this.saveShot(1)
     this.props.addHazard(1)
     this.props.setGreenStatus(false)
 
@@ -288,8 +291,9 @@ class EnterShot extends Component{
       onGreenPressStatus: false,
       offGreenPressStatus: false,
       inHolePressStatus: false,
+      shotHazard: 2
     })
-    this.saveShot()
+    this.saveShot(2)
     this.props.addHazard(2)
     this.props.setGreenStatus(false)
   }
@@ -302,7 +306,7 @@ class EnterShot extends Component{
       offGreenPressStatus: false,
       inHolePressStatus: false,
     })
-    this.saveShot()
+    this.saveShot(0)
     this.props.setGreenStatus(true)
   }
   touchOffGreen(){
@@ -313,7 +317,7 @@ class EnterShot extends Component{
       offGreenPressStatus: true,
       inHolePressStatus: false,
     })
-    this.saveShot()
+    this.saveShot(0)
     this.props.setGreenStatus(false)
   }
   touchinHole(){
@@ -324,7 +328,7 @@ class EnterShot extends Component{
       offGreenPressStatus: false,
       inHolePressStatus: true
     })
-    this.saveShot()
+    this.saveShot(0)
     this.props.finishHole('0','0')
   }
   _onHideUnderlay(){
@@ -529,6 +533,7 @@ class HoleSummary extends Component{
     var puttingCode = "G"+puttDistance
     var totalSG = 0.0
     var holePar=this.props.holePar
+    console.log("shots",shots)
     if(holePar==3){
       drivingDistance=0
     }
@@ -544,14 +549,23 @@ class HoleSummary extends Component{
     this.setState({drivingDistance: drivingDistance})
     for(var i=1;i<shots.length;i++){
       if (i===shots.length-1){
+        console.log("individual shot hazard",shots[i].hazard)
         var shotCode = shots[i].lie + shots[i].distance
-        var shotSG = (parseFloat(sgData[shotCode])-parseFloat(sgData[puttingCode])-1).toFixed(2)
+        var shotSG = (parseFloat(sgData[shotCode])-parseFloat(sgData[puttingCode])-1)
+
+        shotSG=shotSG.toFixed(2)
+        shotSG=parseFloat(shotSG)-shots[i].hazard
+
         sgArray.push(shotSG)
       }
       else{
+
         var shotCode = shots[i].lie + shots[i].distance
         var nextShotCode = shots[i+1].lie + shots[i+1].distance
-        var shotSG = (parseFloat(sgData[shotCode])-parseFloat(sgData[nextShotCode])-1).toFixed(2)
+        var shotSG = (parseFloat(sgData[shotCode])-parseFloat(sgData[nextShotCode])-1)
+
+        shotSG=shotSG.toFixed(2)
+        shotSG=parseFloat(shotSG)-shots[i].hazard
 
         sgArray.push(shotSG)
       }
