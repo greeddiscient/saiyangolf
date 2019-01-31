@@ -142,7 +142,9 @@ class RoundHistoryDetailsScreen extends React.Component {
       { id: 2, name: 'Driving SG', value: this.state.dataDetail.drivingSG },
       { id: 3, name: 'Approach SG', value: this.state.dataDetail.approachSG },
       { id: 4, name: 'Wedge SG', value: this.state.dataDetail.wedgeSG },
-      { id: 5, name: 'Chipping SG', value: this.state.dataDetail.chippingSG }
+      { id: 5, name: 'Chipping SG', value: this.state.dataDetail.chippingSG },
+      { id: 6, name: 'Putting SG', value: this.state.dataDetail.totalPuttingSG},
+      { id: 7, name: 'Total SG', value: this.state.dataDetail.totalSG},
     ]
     var listBox = [];
     listData.map((data, i) => {
