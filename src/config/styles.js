@@ -467,11 +467,36 @@ export default StyleSheet.create({
     borderRadius: 10,
     marginTop: 10,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   textSubBoxES: {
     fontSize: 16,
     textAlign: 'center',
+    fontFamily: fonts.custom.regularOs,
+  },
+  subButtonSmallCustom: {
+    width: (width - 100) / 3,
+    height: 50,
+    borderRadius: 10,
+    marginTop: 10,
+    justifyContent: 'space-around',
+    // alignItems: 'center'
+    alignItems: 'flex-start',
+  },
+  iconLieES: {
+    width: 25, 
+    height: 25, 
+    marginRight: 5
+  },
+  contentButtonSmallES: {
+    marginLeft: 10, 
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  textSubBoxCustomES: {
+    fontSize: 14,
+    textAlign: 'center',
+    fontFamily: fonts.custom.regularOs,
   },
 
   //RoundSummary

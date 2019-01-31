@@ -149,7 +149,7 @@ class RoundHistoryDetailsScreen extends React.Component {
     var listBox = [];
     listData.map((data, i) => {
       listBox.push(
-        <View key={i} style={[styles.containerBoxHorizontal, { marginRight: data.id == 5 ? 20 : 10 }]}>
+        <View key={i} style={[styles.containerBoxHorizontal, { marginRight: data.id == 7 ? 20 : 10 }]}>
           <Text style={styles.textTitleSmallBoxRHD}>{data.value}</Text>
           <Text style={styles.textSmallBoxRHD}>{data.name}</Text>
         </View>

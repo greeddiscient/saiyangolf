@@ -5,6 +5,7 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   Button,
+  Image,
   KeyboardAvoidingView
 } from 'react-native';
 import {
@@ -215,43 +216,88 @@ class EnterShot extends Component {
         <View style={styles.lieTypeContainer}>
           <TouchableOpacity
             activeOpacity={1}
-            style={[styles.subButtonSmall, {
+            style={[styles.subButtonSmallCustom, {
               backgroundColor: this.state.teePressStatus ? colors.primary : colors.darkGrey3, marginRight: 10
             }]}
             onPress={this.touchTeeLie.bind(this)} >
-            <Text style={[styles.textSubBoxES, { color: this.state.teePressStatus ? colors.white : colors.darkGrey }]}>Tee</Text>
+            <View style={styles.contentButtonSmallES}>
+              <Image
+                resizeMode='contain'
+                source={this.state.teePressStatus ? ImageUrl.teeYellowImg : ImageUrl.teeGreyImg}
+                style={styles.iconLieES}
+              />
+              <Text style={[styles.textSubBoxCustomES, { color: this.state.teePressStatus ? colors.white : colors.darkGrey }]}>
+                Tee
+              </Text>
+            </View>
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={1}
-            style={[styles.subButtonSmall, {
+            style={[styles.subButtonSmallCustom, {
               backgroundColor: this.state.fairwayPressStatus ? colors.primary : colors.darkGrey3, marginRight: 9.8
             }]}
             onPress={this.touchFairwayLie.bind(this)} >
-            <Text style={[styles.textSubBoxES, { color: this.state.fairwayPressStatus ? colors.white : colors.darkGrey }]}>Fairway</Text>
+            <View style={styles.contentButtonSmallES}>
+              <Image
+                resizeMode='contain'
+                source={this.state.fairwayPressStatus ? ImageUrl.fairwayYellowImg : ImageUrl.fairwayGreyImg}
+                style={styles.iconLieES}
+              />
+              <Text style={[styles.textSubBoxCustomES, { color: this.state.fairwayPressStatus ? colors.white : colors.darkGrey }]}>
+                Fairway
+              </Text>
+            </View>
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={1}
-            style={[styles.subButtonSmall, {
+            style={[styles.subButtonSmallCustom, {
               backgroundColor: this.state.roughPressStatus ? colors.primary : colors.darkGrey3
             }]}
             onPress={this.touchRoughLie.bind(this)} >
-            <Text style={[styles.textSubBoxES, { color: this.state.roughPressStatus ? colors.white : colors.darkGrey }]}>Rough</Text>
+            <View style={styles.contentButtonSmallES}>
+              <Image
+                resizeMode='contain'
+                source={this.state.roughPressStatus ? ImageUrl.roughYellowImg : ImageUrl.roughGreyImg}
+                style={styles.iconLieES}
+              />
+              <Text style={[styles.textSubBoxCustomES, { color: this.state.roughPressStatus ? colors.white : colors.darkGrey }]}>
+                Rough
+              </Text>
+            </View>
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={1}
-            style={[styles.subButtonSmall, {
+            style={[styles.subButtonSmallCustom, {
               backgroundColor: this.state.sandPressStatus ? colors.primary : colors.darkGrey3, marginRight: 10
             }]}
             onPress={this.touchSandLie.bind(this)} >
-            <Text style={[styles.textSubBoxES, { color: this.state.sandPressStatus ? colors.white : colors.darkGrey }]}>Sand</Text>
+            <View style={styles.contentButtonSmallES}>
+              <Image
+                resizeMode='contain'
+                source={this.state.sandPressStatus ? ImageUrl.sandYellowImg : ImageUrl.sandGreyImg}
+                style={styles.iconLieES}
+              />
+              <Text style={[styles.textSubBoxCustomES, { color: this.state.sandPressStatus ? colors.white : colors.darkGrey }]}>
+                Sand
+              </Text>
+            </View>
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={1}
-            style={[styles.subButtonSmall, {
+            style={[styles.subButtonSmallCustom, {
               backgroundColor: this.state.recoveryPressStatus ? colors.primary : colors.darkGrey3
             }]}
             onPress={this.touchRecoveryLie.bind(this)} >
-            <Text style={[styles.textSubBoxES, { color: this.state.recoveryPressStatus ? colors.white : colors.darkGrey }]}>Recovery</Text>
+            <View style={styles.contentButtonSmallES}>
+              <Image
+                resizeMode='contain'
+                source={this.state.recoveryPressStatus ? ImageUrl.recoveryYellowImg : ImageUrl.recoveryGreyImg}
+                style={styles.iconLieES}
+              />
+              <Text style={[styles.textSubBoxCustomES, { color: this.state.recoveryPressStatus ? colors.white : colors.darkGrey }]}>
+                Recovery
+              </Text>
+            </View>
           </TouchableOpacity>
         </View>
         <View style={{ marginTop: 10 }}>
