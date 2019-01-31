@@ -480,8 +480,8 @@ export default StyleSheet.create({
     borderRadius: 10,
     marginTop: 10,
     justifyContent: 'space-around',
-    // alignItems: 'center'
-    alignItems: 'flex-start',
+    alignItems: 'center'
+    // alignItems: 'flex-start',
   },
   iconLieES: {
     width: 25, 
@@ -489,14 +489,15 @@ export default StyleSheet.create({
     marginRight: 5
   },
   contentButtonSmallES: {
-    marginLeft: 10, 
+    // marginLeft: 5, 
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   textSubBoxCustomES: {
-    fontSize: 14,
+    fontSize: 12,
     textAlign: 'center',
     fontFamily: fonts.custom.regularOs,
+    // flexWrap: 'wrap',
   },
 
   //RoundSummary
