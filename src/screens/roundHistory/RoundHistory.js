@@ -40,36 +40,6 @@ class RoundHistoryScreen extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   that = this
-  //   axios.get('http://saiyan-api.herokuapp.com/api/rounds')
-  //     .then(function (response) {
-  //       // handle success
-  //       console.log(response.data);
-  //       rounds = that.state.rounds
-  //       for (var i = 0; i < response.data.length; i++) {
-  //         rounds.push(response.data[i])
-  //       }
-  //       console.log("after loop", rounds)
-  //       that.setState({
-  //         rounds: rounds
-  //       })
-  //     })
-  //     .catch(function (error) {
-  //       // handle error
-  //       console.log(error);
-  //     })
-  // }
-
-  getRoundDetails(id) {
-    console.log(id)
-    var rounds = this.state.rounds
-    this.props.navigation.navigate('RoundHistoryDetails', {
-      round: rounds[id],
-      numberRound: id + 1
-    })
-  }
-
   render() {
     var rows = []
     var rounds = this.state.rounds
@@ -115,7 +85,15 @@ class RoundHistoryScreen extends React.Component {
                   />
                 </TouchableOpacity>
               </View>
-              <Content>
+              <Content
+                refreshControl={
+                  <RefreshControl
+                    refreshing={this.state.refreshing}
+                    onRefresh={() => this.onRefresh()}
+                    progressBackgroundColor={colors.primary}
+                    colors={[colors.white, colors.white, colors.white]}
+                  />
+                }>
                 <View style={styles.containerSubHeader}>
                   <View style={styles.contentSubHeader}>
                     <Text style={styles.textTitleHistory}>
@@ -148,6 +126,63 @@ class RoundHistoryScreen extends React.Component {
         </Container>
       </StyleProvider>
     );
+  }
+
+  async onRefresh() {
+    if (!this.state.refreshing) {
+      this.loadDataFromServer();
+    }
+  }
+
+  getRoundDetails(id) {
+    console.log(id)
+    var rounds = this.state.rounds
+    this.props.navigation.navigate('RoundHistoryDetails', {
+      round: rounds[id],
+      numberRound: id + 1
+    })
+  }
+
+  loadDataFromServer() {
+    that = this
+    if (this.state.refreshing == false) {
+      this.setState({ refreshing: true });
+      axios.get('http://saiyan-api.herokuapp.com/api/rounds')
+        .then(function (response) {
+          // handle success
+          console.log(response.data);
+          rounds = that.state.rounds
+          for (var i = 0; i < response.data.length; i++) {
+            rounds.push(response.data[i])
+          }
+
+          var sorted_round = rounds.sort((a, b) => {
+            return (
+              new Date(moment(moment(a.roundDate, 'MMM Do YYYY')).format('YYYY-MM-DD')).getTime() -
+              new Date(moment(moment(b.roundDate, 'MMM Do YYYY')).format('YYYY-MM-DD')).getTime()
+            )
+          }).reverse();
+
+          var finalSort = sorted_round.map((data, i) => {
+            return { ...data, roundNumber: sorted_round.length - i };
+          });
+
+          console.log("after loop", rounds)
+          that.setState({
+            rounds: finalSort,
+            refreshing: false,
+            isloading: false,
+          })
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+          that.setState({
+            refreshing: false,
+            isloading: false,
+          })
+        })
+    }
   }
 
 }

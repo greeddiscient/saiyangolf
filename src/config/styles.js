@@ -275,10 +275,11 @@ export default StyleSheet.create({
     width: width - 80,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 20
+    marginBottom: 20,
+    alignItems: 'center'
   },
   textTitleCardRight: {
-    fontSize: 16,
+    fontSize: 14,
     textAlign: 'right',
     color: colors.darkGrey1,
     fontFamily: fonts.custom.regularOs,

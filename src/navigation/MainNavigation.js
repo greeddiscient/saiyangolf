@@ -99,7 +99,6 @@ class MainNavigation extends Component {
               }]
             }}
           >
-            {/* <Image source={images.boxin} style={{ width: 100, height: 100, }} /> */}
           </Animated.View>
         </View>
       );
@@ -116,11 +115,11 @@ const Root = createStackNavigator(
     RoundDetails: RoundSummaryScreen,
     RoundHistory: RoundHistoryScreen,
     RoundHistoryDetails: RoundHistoryDetailScreen
-},
-{
+  },
+  {
     initialRouteName: 'Login',
     headerMode: 'none'
-}
+  }
 );
 
 
