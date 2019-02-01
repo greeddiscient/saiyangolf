@@ -28,17 +28,16 @@ import ImageUrl from '../../config/images';
 import Function from '../../utilities/Function';
 
 const { width, height } = Dimensions.get("window");
-class Login extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
       rounds: [],
+      name: '',
       email: '',
-      password: ''
-      // isloading: true,
-      // refreshing: false,
+      password: '',
+      confirmPass: '',
     };
-
   }
 
   render() {
@@ -48,22 +47,38 @@ class Login extends Component {
           <StatusBar backgroundColor={colors.secondary} barStyle="light-content" />
           <Image source={ImageUrl.bgImg} style={styles.bgHome} />
           <Content>
-            <View style={{ marginTop: 50, marginLeft: 40 }}>
-              <Text style={styles.titleHeaderHome}>
-                Welcome to <Text style={styles.titleHeaderBoldHome}>Saiyan Golf</Text>
-              </Text>
-              <Text style={styles.textHeaderHome}>Let's golf like a super saiyan</Text>
-            </View>
-            <View style={{marginTop: 20}}>
-              <Image source={ImageUrl.loginGolferImg} style={styles.styleBgImage} />
+            <View>
+              <View style={styles.containerImageRegister}>
+                <Image
+                  resizeMode='contain'
+                  source={ImageUrl.golfersImg}
+                  style={styles.styleImageGolfer}
+                />
+              </View>
               <View style={{ width: width }}>
-                <View style={{ marginTop: 280, marginLeft: 20 }}>
+                <View style={{ marginLeft: 20 }}>
                   <View style={{ marginBottom: 20 }}>
-                    <Text style={styles.textTitleAuth}>Login</Text>
+                    <Text style={styles.textTitleAuth}>Register</Text>
                   </View>
                   <View style={styles.boxInputAuth}>
                     <Input
                       ref="1"
+                      autoCorrect={false}
+                      autoCapitalize='none'
+                      returnKeyType={"next"}
+                      underlineColorAndroid="transparent"
+                      placeholderTextColor={colors.white}
+                      placeholder='Name'
+                      placeholderTextColor={colors.darkGrey4}
+                      style={styles.textInputAuth}
+                      onChangeText={name => this.setState({ name })}
+                      onSubmitEditing={() => Function.focusNextField(this, "2")}
+                      value={this.state.name}
+                    />
+                  </View>
+                  <View style={styles.boxInputAuth}>
+                    <Input
+                      ref="2"
                       autoCorrect={false}
                       autoCapitalize='none'
                       returnKeyType={"next"}
@@ -74,41 +89,59 @@ class Login extends Component {
                       placeholderTextColor={colors.darkGrey4}
                       style={styles.textInputAuth}
                       onChangeText={email => this.setState({ email })}
-                      onSubmitEditing={() => Function.focusNextField(this, "2")}
+                      onSubmitEditing={() => Function.focusNextField(this, "3")}
                       value={this.state.email}
                     />
                   </View>
                   <View style={styles.boxInputAuth}>
                     <Input
-                      ref="2"
+                      ref="3"
                       autoCorrect={false}
                       autoCapitalize='none'
                       returnKeyType={"next"}
                       underlineColorAndroid="transparent"
-                      secureTextEntry={true}
+                      placeholderTextColor={colors.white}
                       style={styles.textInputAuth}
+                      secureTextEntry={true}
                       placeholder='Password'
                       placeholderTextColor={colors.darkGrey4}
                       onChangeText={password => this.setState({ password })}
-                      onSubmitEditing={() => this.loginPress()}
+                      onSubmitEditing={() => Function.focusNextField(this, "4")}
                       value={this.state.password}
+                    />
+                  </View>
+                  <View style={styles.boxInputAuth}>
+                    <Input
+                      ref="4"
+                      autoCorrect={false}
+                      autoCapitalize='none'
+                      returnKeyType={"next"}
+                      underlineColorAndroid="transparent"
+                      placeholderTextColor={colors.white}
+                      style={styles.textInputAuth}
+                      secureTextEntry={true}
+                      placeholder='Confirm password'
+                      placeholderTextColor={colors.darkGrey4}
+                      onChangeText={confirmPass => this.setState({ confirmPass })}
+                      onSubmitEditing={() => this.buttonPress()}
+                      value={this.state.confirmPass}
                     />
                   </View>
                   <TouchableOpacity
                     style={styles.buttonNewRound}
-                    onPress={() => this.loginPress()}
+                    onPress={() => this.buttonPress()}
                   >
-                    <Text style={styles.buttonNew}>Login</Text>
+                    <Text style={styles.buttonNew}>Register</Text>
                   </TouchableOpacity>
                 </View>
                 <View style={styles.footerContent}>
                   <Text style={styles.footerText}>
-                    Don't have an account?
+                    Already have an account?
                   </Text>
                   <TouchableOpacity
-                    onPress={() => this.onRegisterPress()}
+                    onPress={() => this.onLoginPress()}
                   >
-                    <Text style={styles.footerTextTwo}> Register here</Text>
+                    <Text style={styles.footerTextTwo}> Login here</Text>
                   </TouchableOpacity>
                 </View>
               </View>
@@ -119,18 +152,18 @@ class Login extends Component {
     );
   }
 
-  loginPress() {
-    Function.Home(
+  onLoginPress() {
+    Function.Login(
       this.props.navigation
     )
   }
 
-  onRegisterPress() {
-    Function.Register(
+  buttonPress() {
+    Function.Home(
       this.props.navigation
     )
   }
 
 }
 
-export default Login;
+export default Register;

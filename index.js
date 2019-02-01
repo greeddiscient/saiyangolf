@@ -2,21 +2,19 @@
 /** @format */
 
 import React, { Component } from 'react'
-import {AppRegistry} from 'react-native';
-// import App from './App';
-import Navigation from './src/navigation';
 import {name as appName} from './app.json';
+import {AppRegistry} from 'react-native';
+import Setup from './src/navigation/Setup';
 
 class SaiyanGolf extends Component {
-    render() {
-      return (
-        // <App />
-        <Navigation />
-      );
-    }
+  render() {
+    return (
+      <Setup />
+    );
   }
-  
-  export default SaiyanGolf;
+}
+
+export default SaiyanGolf;
 
 AppRegistry.registerComponent(appName, () => SaiyanGolf);
 

@@ -134,7 +134,7 @@ export default StyleSheet.create({
     width: width - 40,
   },
   scrollViewContainer: {
-    flex: 1,
+    // flex: 1,
     paddingBottom: 100,
     width: width - 40,
     marginLeft: 20
@@ -579,10 +579,81 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   imageModalGolfer: {
-    width: (width - (width / 3)), height: (height / 2) + 30
+    width: (width - (width / 3)), 
+    height: (height / 2) + 30
   },
   containerImageModalRS: {
-    width: width, height: (height / 2) + 30, alignItems: 'flex-end', marginTop: 20
+    width: width, 
+    height: (height / 2) + 30, 
+    alignItems: 'flex-end', 
+    marginTop: 20
   },
-  
+
+  //Login
+  footerContent: {
+    height: 50,
+    width: width,
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    justifyContent: 'center',
+    alignItems: "center",
+    marginTop: 50,
+  },
+  footerText: {
+    fontFamily: fonts.custom.regularMs,
+    fontSize: 14,
+    textAlign: "center"
+  },
+  footerTextTwo: {
+    fontFamily: fonts.custom.boldMs,
+    fontSize: 14,
+    textAlign: "center",
+    marginTop: Platform.OS === "android" ? 5 : 0,
+    marginBottom: Platform.OS === "android" ? 5 : 0
+  },
+
+  //Register
+  containerImageRegister: {
+    width: width - 40,
+    height: 180,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 15,
+    marginTop: 20,
+    marginLeft: 20
+  },
+
+  //Globall
+  boxInputAuth: {
+    height: 50,
+    width: width - 40,
+    backgroundColor: colors.white,
+    marginBottom: 20,
+    borderWidth: 0.5,
+    borderColor: "#ccc",
+    shadowColor: "grey",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.5,
+    elevation: 3,
+    borderRadius: 10
+  },
+  textTitleAuth: {
+    fontFamily: fonts.custom.boldMs,
+    fontSize: 25,
+    fontWeight: 'bold'
+  },
+  styleBgImage: {
+    width: width, 
+    // height: height+90, 
+    height: height+20,
+    position: 'absolute',
+    overflow: 'hidden',
+    // backgroundColor: colors.white
+  },
+  textInputAuth: {
+    paddingLeft: 20,
+    fontFamily: fonts.custom.regularOs,
+    fontSize: 16,
+  }
 });

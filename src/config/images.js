@@ -17,4 +17,5 @@ export default {
   roughYellowImg: require('../../assets/images/rough_yellow.png'),
   recoveryYellowImg: require('../../assets/images/recovery_yellow.png'),
   fairwayYellowImg: require('../../assets/images/fairway_yellow.png'),
+  loginGolferImg: require('../../assets/images/loginGolfer.png'),
 };
