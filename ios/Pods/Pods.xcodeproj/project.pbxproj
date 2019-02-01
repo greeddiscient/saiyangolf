@@ -1,0 +1,693 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5033CD34C9E51AAC4BE40F504E41F580 /* Pods-saiyangolfTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 397ADE82480883B68A181F191F8BB893 /* Pods-saiyangolfTests-dummy.m */; };
+		892E77CB3C42A356C72E2401C4DD7C45 /* Pods-saiyangolf-tvOSTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B430E0F49FE3A4FF1055D5DE38C41CF /* Pods-saiyangolf-tvOSTests-dummy.m */; };
+		9263E9E817E2C5430D9B5932D3A7D159 /* Pods-saiyangolf-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDEC01BEC1051D489E687BE58C62C5A /* Pods-saiyangolf-dummy.m */; };
+		B30EE47E73C42ED909B110F5E46F4D3A /* Pods-saiyangolf-tvOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D8BE57F530BD16CFB32E66C66D0102CF /* Pods-saiyangolf-tvOS-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		045C746C4E0533586ED263084EF25FB4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30D243030A887BCB7322126959E13296;
+			remoteInfo = "Pods-saiyangolf";
+		};
+		2CAE68037D944FB4B064DEC6303827A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 30D243030A887BCB7322126959E13296;
+			remoteInfo = "Pods-saiyangolf";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0B430E0F49FE3A4FF1055D5DE38C41CF /* Pods-saiyangolf-tvOSTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-saiyangolf-tvOSTests-dummy.m"; sourceTree = "<group>"; };
+		0FCCF8298FD62F9041027AD8E64EEB9C /* Pods-saiyangolf-tvOSTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-saiyangolf-tvOSTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		1B309BD4AA42416824D4FBCC827A637C /* Pods-saiyangolf-tvOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-saiyangolf-tvOS-frameworks.sh"; sourceTree = "<group>"; };
+		210502F63D63F70EE4FD7FDA19AA9594 /* Pods-saiyangolfTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-saiyangolfTests.debug.xcconfig"; sourceTree = "<group>"; };
+		331480F5A3BE53A8FFF1D5C0DFA56F61 /* Pods-saiyangolf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-saiyangolf.release.xcconfig"; sourceTree = "<group>"; };
+		397ADE82480883B68A181F191F8BB893 /* Pods-saiyangolfTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-saiyangolfTests-dummy.m"; sourceTree = "<group>"; };
+		3F07DAB65CE6170C7E228B3BE4D61363 /* Pods-saiyangolfTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-saiyangolfTests-resources.sh"; sourceTree = "<group>"; };
+		474DDB6CBCF499A4ABDEB96B41445F59 /* Pods-saiyangolf-tvOSTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-saiyangolf-tvOSTests-resources.sh"; sourceTree = "<group>"; };
+		4AA95A9EECB6A80F6FEE4C9F81660D69 /* libPods-saiyangolf.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-saiyangolf.a"; path = "libPods-saiyangolf.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D96F5F992158049E60A86BB7DA9AC22 /* Pods-saiyangolf-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-saiyangolf-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4DA433D348FDE643493DE413A726C4F7 /* Pods-saiyangolf-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-saiyangolf-acknowledgements.markdown"; sourceTree = "<group>"; };
+		61EFACE888872076BCB4C4DBA6E5EBD3 /* Pods-saiyangolfTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-saiyangolfTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		6434ABF099EE97DCB0C4EE79E4D960F7 /* Pods-saiyangolf-tvOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-saiyangolf-tvOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		855AEE1525EAE8FB8FEA7D59F73154AE /* Pods-saiyangolf-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-saiyangolf-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		884FDFCAE3E2E76EE6D4A37A6916CEAF /* Pods-saiyangolf-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-saiyangolf-frameworks.sh"; sourceTree = "<group>"; };
+		8E6E0A862EF7848B2CCF41715A615A47 /* Pods-saiyangolf-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-saiyangolf-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		8F17DEEB1D1EE50A18450E5D17301CC2 /* libPods-saiyangolfTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-saiyangolfTests.a"; path = "libPods-saiyangolfTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90F8797E939005A399CDB8E86029CB51 /* Pods-saiyangolf-tvOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-saiyangolf-tvOS-resources.sh"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		99C7AC1FED16E3ACE7776798A425066E /* Pods-saiyangolf-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-saiyangolf-resources.sh"; sourceTree = "<group>"; };
+		9F0BAA0BF40E4E2F318F54B87470EA38 /* libPods-saiyangolf-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-saiyangolf-tvOS.a"; path = "libPods-saiyangolf-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FDEC01BEC1051D489E687BE58C62C5A /* Pods-saiyangolf-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-saiyangolf-dummy.m"; sourceTree = "<group>"; };
+		A6F42C21CE51C62C5A104BF0DA4FC53F /* Pods-saiyangolf-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-saiyangolf-acknowledgements.plist"; sourceTree = "<group>"; };
+		AD0CB5A050FE884814239A1231DD572C /* Pods-saiyangolf-tvOSTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-saiyangolf-tvOSTests-frameworks.sh"; sourceTree = "<group>"; };
+		B806363C6771DF218688B520CE41AE06 /* Pods-saiyangolfTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-saiyangolfTests-frameworks.sh"; sourceTree = "<group>"; };
+		C4849597355B779198418CDFA8B6D385 /* libPods-saiyangolf-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-saiyangolf-tvOSTests.a"; path = "libPods-saiyangolf-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C58F8A1DCDD07DB8CE31B16EDDB5AFFF /* Pods-saiyangolfTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-saiyangolfTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		C77557DE3E78AAEDE3A6A7D70F0255F7 /* Pods-saiyangolf-tvOSTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-saiyangolf-tvOSTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		CDF5A0C75DFAC1BACB55D50ABC32AF06 /* Pods-saiyangolf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-saiyangolf.debug.xcconfig"; sourceTree = "<group>"; };
+		D67623E8A98DD95334E4EBA3AB3CDC78 /* Pods-saiyangolf-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-saiyangolf-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		D8BE57F530BD16CFB32E66C66D0102CF /* Pods-saiyangolf-tvOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-saiyangolf-tvOS-dummy.m"; sourceTree = "<group>"; };
+		DFB963774CCBF8FDD52D6024D7DBF2FC /* Pods-saiyangolf-tvOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-saiyangolf-tvOS-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F9FD9BE0A72C87D0A6A69AE59E1ED774 /* Pods-saiyangolfTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-saiyangolfTests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		16038B7A0C3A052F86771929DD367535 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46445E9D1D887E57FDB1D3558A27629C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7C1ACD413DBE9AE5A52FD6C13494F443 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A672E8EA4691DD547EC06FC44A303740 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		18079F74E771B18C6FEB16DDDE8E8065 /* Pods-saiyangolf-tvOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				C77557DE3E78AAEDE3A6A7D70F0255F7 /* Pods-saiyangolf-tvOSTests-acknowledgements.markdown */,
+				0FCCF8298FD62F9041027AD8E64EEB9C /* Pods-saiyangolf-tvOSTests-acknowledgements.plist */,
+				0B430E0F49FE3A4FF1055D5DE38C41CF /* Pods-saiyangolf-tvOSTests-dummy.m */,
+				AD0CB5A050FE884814239A1231DD572C /* Pods-saiyangolf-tvOSTests-frameworks.sh */,
+				474DDB6CBCF499A4ABDEB96B41445F59 /* Pods-saiyangolf-tvOSTests-resources.sh */,
+				4D96F5F992158049E60A86BB7DA9AC22 /* Pods-saiyangolf-tvOSTests.debug.xcconfig */,
+				D67623E8A98DD95334E4EBA3AB3CDC78 /* Pods-saiyangolf-tvOSTests.release.xcconfig */,
+			);
+			name = "Pods-saiyangolf-tvOSTests";
+			path = "Target Support Files/Pods-saiyangolf-tvOSTests";
+			sourceTree = "<group>";
+		};
+		5A405D33910C48025D5A54706C3F90EC /* Pods-saiyangolf */ = {
+			isa = PBXGroup;
+			children = (
+				4DA433D348FDE643493DE413A726C4F7 /* Pods-saiyangolf-acknowledgements.markdown */,
+				A6F42C21CE51C62C5A104BF0DA4FC53F /* Pods-saiyangolf-acknowledgements.plist */,
+				9FDEC01BEC1051D489E687BE58C62C5A /* Pods-saiyangolf-dummy.m */,
+				884FDFCAE3E2E76EE6D4A37A6916CEAF /* Pods-saiyangolf-frameworks.sh */,
+				99C7AC1FED16E3ACE7776798A425066E /* Pods-saiyangolf-resources.sh */,
+				CDF5A0C75DFAC1BACB55D50ABC32AF06 /* Pods-saiyangolf.debug.xcconfig */,
+				331480F5A3BE53A8FFF1D5C0DFA56F61 /* Pods-saiyangolf.release.xcconfig */,
+			);
+			name = "Pods-saiyangolf";
+			path = "Target Support Files/Pods-saiyangolf";
+			sourceTree = "<group>";
+		};
+		64AB7C79DCDC52C7DB63F5C96385DF5B /* Pods-saiyangolfTests */ = {
+			isa = PBXGroup;
+			children = (
+				61EFACE888872076BCB4C4DBA6E5EBD3 /* Pods-saiyangolfTests-acknowledgements.markdown */,
+				C58F8A1DCDD07DB8CE31B16EDDB5AFFF /* Pods-saiyangolfTests-acknowledgements.plist */,
+				397ADE82480883B68A181F191F8BB893 /* Pods-saiyangolfTests-dummy.m */,
+				B806363C6771DF218688B520CE41AE06 /* Pods-saiyangolfTests-frameworks.sh */,
+				3F07DAB65CE6170C7E228B3BE4D61363 /* Pods-saiyangolfTests-resources.sh */,
+				210502F63D63F70EE4FD7FDA19AA9594 /* Pods-saiyangolfTests.debug.xcconfig */,
+				F9FD9BE0A72C87D0A6A69AE59E1ED774 /* Pods-saiyangolfTests.release.xcconfig */,
+			);
+			name = "Pods-saiyangolfTests";
+			path = "Target Support Files/Pods-saiyangolfTests";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */,
+				D5BC17AC76FA6CEFE98DAEE5DA67DEDF /* Products */,
+				A7A95C6C388990450A542A2B059CCAC7 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		A383AB19C07C509A3838B54D5C1CD6C9 /* Pods-saiyangolf-tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				DFB963774CCBF8FDD52D6024D7DBF2FC /* Pods-saiyangolf-tvOS-acknowledgements.markdown */,
+				6434ABF099EE97DCB0C4EE79E4D960F7 /* Pods-saiyangolf-tvOS-acknowledgements.plist */,
+				D8BE57F530BD16CFB32E66C66D0102CF /* Pods-saiyangolf-tvOS-dummy.m */,
+				1B309BD4AA42416824D4FBCC827A637C /* Pods-saiyangolf-tvOS-frameworks.sh */,
+				90F8797E939005A399CDB8E86029CB51 /* Pods-saiyangolf-tvOS-resources.sh */,
+				8E6E0A862EF7848B2CCF41715A615A47 /* Pods-saiyangolf-tvOS.debug.xcconfig */,
+				855AEE1525EAE8FB8FEA7D59F73154AE /* Pods-saiyangolf-tvOS.release.xcconfig */,
+			);
+			name = "Pods-saiyangolf-tvOS";
+			path = "Target Support Files/Pods-saiyangolf-tvOS";
+			sourceTree = "<group>";
+		};
+		A7A95C6C388990450A542A2B059CCAC7 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5A405D33910C48025D5A54706C3F90EC /* Pods-saiyangolf */,
+				A383AB19C07C509A3838B54D5C1CD6C9 /* Pods-saiyangolf-tvOS */,
+				18079F74E771B18C6FEB16DDDE8E8065 /* Pods-saiyangolf-tvOSTests */,
+				64AB7C79DCDC52C7DB63F5C96385DF5B /* Pods-saiyangolfTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		D5BC17AC76FA6CEFE98DAEE5DA67DEDF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4AA95A9EECB6A80F6FEE4C9F81660D69 /* libPods-saiyangolf.a */,
+				9F0BAA0BF40E4E2F318F54B87470EA38 /* libPods-saiyangolf-tvOS.a */,
+				C4849597355B779198418CDFA8B6D385 /* libPods-saiyangolf-tvOSTests.a */,
+				8F17DEEB1D1EE50A18450E5D17301CC2 /* libPods-saiyangolfTests.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		30D243030A887BCB7322126959E13296 /* Pods-saiyangolf */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13A9DB4650C99BAF0C1B068AFA45F447 /* Build configuration list for PBXNativeTarget "Pods-saiyangolf" */;
+			buildPhases = (
+				660D212988DF3A405D31D3483BB8DCE2 /* Sources */,
+				A672E8EA4691DD547EC06FC44A303740 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-saiyangolf";
+			productName = "Pods-saiyangolf";
+			productReference = 4AA95A9EECB6A80F6FEE4C9F81660D69 /* libPods-saiyangolf.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		30FE5F6B35F0322BF4EB52963B471475 /* Pods-saiyangolf-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE44EDA6566777173951C6E82C78D07C /* Build configuration list for PBXNativeTarget "Pods-saiyangolf-tvOS" */;
+			buildPhases = (
+				79426C665C4C52535ED201A2C9AA8506 /* Sources */,
+				7C1ACD413DBE9AE5A52FD6C13494F443 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-saiyangolf-tvOS";
+			productName = "Pods-saiyangolf-tvOS";
+			productReference = 9F0BAA0BF40E4E2F318F54B87470EA38 /* libPods-saiyangolf-tvOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		66FE7BDD35F8D05CB6652E7AA5CA10F6 /* Pods-saiyangolf-tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 355C25FF2C9ABC1E94461954FA5BE9E2 /* Build configuration list for PBXNativeTarget "Pods-saiyangolf-tvOSTests" */;
+			buildPhases = (
+				6449B0FD53E3C024EBC579F61090C2A8 /* Sources */,
+				16038B7A0C3A052F86771929DD367535 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7DBE44CBE22391372D77B50AEA356230 /* PBXTargetDependency */,
+			);
+			name = "Pods-saiyangolf-tvOSTests";
+			productName = "Pods-saiyangolf-tvOSTests";
+			productReference = C4849597355B779198418CDFA8B6D385 /* libPods-saiyangolf-tvOSTests.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		A7D38DEA8517D4861D5BD7317198295B /* Pods-saiyangolfTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 02D76630C397503CF82F4F5EFF9EC9BC /* Build configuration list for PBXNativeTarget "Pods-saiyangolfTests" */;
+			buildPhases = (
+				59B4FDB61BD5211F06692B5D14CBA07B /* Sources */,
+				46445E9D1D887E57FDB1D3558A27629C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E3D36CF1D5B1BBAA7F9281CECD766BBB /* PBXTargetDependency */,
+			);
+			name = "Pods-saiyangolfTests";
+			productName = "Pods-saiyangolfTests";
+			productReference = 8F17DEEB1D1EE50A18450E5D17301CC2 /* libPods-saiyangolfTests.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = D5BC17AC76FA6CEFE98DAEE5DA67DEDF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				30D243030A887BCB7322126959E13296 /* Pods-saiyangolf */,
+				30FE5F6B35F0322BF4EB52963B471475 /* Pods-saiyangolf-tvOS */,
+				66FE7BDD35F8D05CB6652E7AA5CA10F6 /* Pods-saiyangolf-tvOSTests */,
+				A7D38DEA8517D4861D5BD7317198295B /* Pods-saiyangolfTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		59B4FDB61BD5211F06692B5D14CBA07B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5033CD34C9E51AAC4BE40F504E41F580 /* Pods-saiyangolfTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6449B0FD53E3C024EBC579F61090C2A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				892E77CB3C42A356C72E2401C4DD7C45 /* Pods-saiyangolf-tvOSTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		660D212988DF3A405D31D3483BB8DCE2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9263E9E817E2C5430D9B5932D3A7D159 /* Pods-saiyangolf-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		79426C665C4C52535ED201A2C9AA8506 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B30EE47E73C42ED909B110F5E46F4D3A /* Pods-saiyangolf-tvOS-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7DBE44CBE22391372D77B50AEA356230 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-saiyangolf";
+			target = 30D243030A887BCB7322126959E13296 /* Pods-saiyangolf */;
+			targetProxy = 2CAE68037D944FB4B064DEC6303827A6 /* PBXContainerItemProxy */;
+		};
+		E3D36CF1D5B1BBAA7F9281CECD766BBB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-saiyangolf";
+			target = 30D243030A887BCB7322126959E13296 /* Pods-saiyangolf */;
+			targetProxy = 045C746C4E0533586ED263084EF25FB4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0021EF0BE488614B48EB4A0D96E7443E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E6E0A862EF7848B2CCF41715A615A47 /* Pods-saiyangolf-tvOS.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		1A13968A98B4E18783AC0F8CADB112F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDF5A0C75DFAC1BACB55D50ABC32AF06 /* Pods-saiyangolf.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1EA8CDCA49D5A280A3417B7878BFF5DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Debug;
+		};
+		4A3629F3D81CCCBF66074F0E5F6519DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D67623E8A98DD95334E4EBA3AB3CDC78 /* Pods-saiyangolf-tvOSTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		78CCF2F8575642B0F9526268F670DF6D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+			};
+			name = Release;
+		};
+		7FB60703DDADBCD3586539C3CBE35727 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F9FD9BE0A72C87D0A6A69AE59E1ED774 /* Pods-saiyangolfTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B5C33B25AED9A4C45D1BDB3AA7AF8784 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 331480F5A3BE53A8FFF1D5C0DFA56F61 /* Pods-saiyangolf.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BF78BD73FD9CE7957B2A877A876E2D28 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 210502F63D63F70EE4FD7FDA19AA9594 /* Pods-saiyangolfTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C0C97252088B9693719B837FB1029017 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D96F5F992158049E60A86BB7DA9AC22 /* Pods-saiyangolf-tvOSTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F24EF4CE4C90DBD9B2545C3237C193EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 855AEE1525EAE8FB8FEA7D59F73154AE /* Pods-saiyangolf-tvOS.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		02D76630C397503CF82F4F5EFF9EC9BC /* Build configuration list for PBXNativeTarget "Pods-saiyangolfTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BF78BD73FD9CE7957B2A877A876E2D28 /* Debug */,
+				7FB60703DDADBCD3586539C3CBE35727 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13A9DB4650C99BAF0C1B068AFA45F447 /* Build configuration list for PBXNativeTarget "Pods-saiyangolf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A13968A98B4E18783AC0F8CADB112F6 /* Debug */,
+				B5C33B25AED9A4C45D1BDB3AA7AF8784 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EA8CDCA49D5A280A3417B7878BFF5DD /* Debug */,
+				78CCF2F8575642B0F9526268F670DF6D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		355C25FF2C9ABC1E94461954FA5BE9E2 /* Build configuration list for PBXNativeTarget "Pods-saiyangolf-tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0C97252088B9693719B837FB1029017 /* Debug */,
+				4A3629F3D81CCCBF66074F0E5F6519DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE44EDA6566777173951C6E82C78D07C /* Build configuration list for PBXNativeTarget "Pods-saiyangolf-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0021EF0BE488614B48EB4A0D96E7443E /* Debug */,
+				F24EF4CE4C90DBD9B2545C3237C193EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
