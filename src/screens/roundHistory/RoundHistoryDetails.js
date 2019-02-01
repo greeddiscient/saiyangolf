@@ -98,7 +98,7 @@ class RoundHistoryDetailsScreen extends React.Component {
                 <View style={{ width: width - 60, marginLeft: 30 }}>
                   <View style={{ flexDirection: 'row', paddingTop: 10 }}>
                     <View style={{ width: 100 }}>
-                      <Text style={styles.titleRHD}>Round {this.state.numberRound}</Text>
+                      <Text style={styles.titleRHD}>Round {this.state.dataDetail.roundNumber}</Text>
                     </View>
                     <View style={{ width: width - 170 }}>
                       <Text style={styles.textTitleRightRH}>

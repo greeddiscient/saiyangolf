@@ -82,7 +82,7 @@ class RoundHistoryScreen extends React.Component {
           >
             <View style={styles.boxSubTitleHistory}>
               <View style={{ width: 100 }}>
-                <Text style={styles.textTitleCard} >Round {i + 1}</Text>
+                <Text style={styles.textTitleCard} >Round {rounds[i].roundNumber}</Text>
               </View>
               <View style={{ width: this.state.saveWidth - 180 }}>
                 <Text style={styles.textTitleCardRight}>{rounds[i].courseName} {rounds[i].roundDate}</Text>

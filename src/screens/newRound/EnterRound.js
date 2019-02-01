@@ -197,10 +197,8 @@ class EnterRoundScreen extends React.Component {
               />
             </View>
           </View>
-          <Content>
-            {/* <View style={[StyleSheet.absoluteFill, {marginTop: 50}]}>
-            <KeyboardAvoidingView style={StyleSheet.absoluteFill} behavior="padding" enabled> */}
-            <ScrollView style={styles.scrollViewContainer}>
+          <Content >
+            <View style={styles.scrollViewContainer}>
               <View style={{ marginLeft: 10, marginBottom: 20 }}>
                 <Text style={styles.textTitleBase}>
                   Hole {JSON.stringify(holeNumber)}
@@ -279,9 +277,7 @@ class EnterRoundScreen extends React.Component {
                   Do you want to restart hole?
                 </Text>
               </TouchableOpacity>
-            </ScrollView>
-            {/* </KeyboardAvoidingView>
-          </View> */}
+            </View>
           </Content>
         </Container>
       </StyleProvider>

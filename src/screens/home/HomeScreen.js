@@ -23,6 +23,7 @@ import {
 } from 'native-base';
 import * as Progress from 'react-native-progress';
 import axios from 'axios';
+import moment from 'moment';
 
 import colors from '../../config/colors';
 import styles from '../../config/styles';
@@ -68,9 +69,21 @@ class HomeScreen extends Component {
           for (var i = 0; i < response.data.length; i++) {
             rounds.push(response.data[i])
           }
+
+          var sorted_round = rounds.sort((a, b) => {
+            return (
+              new Date(moment(moment(a.roundDate, 'MMM Do YYYY')).format('YYYY-MM-DD')).getTime() -
+              new Date(moment(moment(b.roundDate, 'MMM Do YYYY')).format('YYYY-MM-DD')).getTime()
+            )
+          }).reverse();
+
+          var finalSort = sorted_round.map((data, i) => {
+            return { ...data, roundNumber: sorted_round.length - i };
+          });
+
           console.log("after loop", rounds)
           that.setState({
-            rounds: rounds,
+            rounds: finalSort,
             refreshing: false,
             isloading: false,
           })
@@ -174,7 +187,7 @@ class HomeScreen extends Component {
         <View style={{ marginBottom: 20 }}>
           <View style={[styles.boxSubTitleHistory, { marginTop: 20 }]}>
             <View style={{ width: 100 }}>
-              <Text style={styles.textTitleCard}>Round {parseInt(rowID) + 1}</Text>
+              <Text style={styles.textTitleCard}>Round {rowData.roundNumber}</Text>
             </View>
             <View style={{ width: this.state.saveWidth - 180 }}>
               <Text style={styles.textTitleCardRight}>

@@ -199,7 +199,7 @@ class EnterShot extends Component {
         </Text>
         <Text style={styles.baseText}>
           Distance to Green (in Yards)
-      </Text>
+        </Text>
         <View style={{ marginTop: 10, marginBottom: 10 }}>
           <Input
             style={styles.textInput}

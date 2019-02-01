@@ -42,10 +42,10 @@ class Putting extends Component {
           <View style={{ marginBottom: 10 }}>
             <Text style={styles.textTitleBase}>
               Putting
-          </Text>
+            </Text>
             <Text style={styles.baseText}>
               Distance on Green (in Feet)
-          </Text>
+            </Text>
           </View>
           <Input
             style={styles.textInput}
@@ -56,7 +56,7 @@ class Putting extends Component {
           <View style={{ marginTop: 10, marginBottom: 10 }}>
             <Text style={styles.textTitleBase}>
               Number of Putts
-        </Text>
+            </Text>
           </View>
           <Input
             style={styles.textInput}
