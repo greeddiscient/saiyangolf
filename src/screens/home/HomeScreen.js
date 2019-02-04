@@ -39,23 +39,30 @@ class HomeScreen extends Component {
       rounds: [],
       isloading: true,
       refreshing: false,
+      statusBack: props.navigation.state.params != null && props.navigation.state.params.statusBack != null ? props.navigation.state.params.statusBack : 0,
     };
 
     this.loadDataFromServer();
   }
 
-  //   componentDidMount() {
-  //     this.willFocusListener = this.props.navigation.addListener(
-  //       'willFocus',
-  //       () => {
-  //         this.onRefresh()
-  //       }
-  //     );
-  // }
+    componentDidMount() {
+      this.willFocusListener = this.props.navigation.addListener(
+        'willFocus',
+        () => {
+          if (this.state.statusBack == 1){
+            this.onRefresh()
+          }
 
-  // componentWillUnmount() {
-  //   this.willFocusListener.remove();
-  // }
+          this.setState({ statusBack: 0 })
+        }
+      );
+  }
+
+  componentWillUnmount() {
+    if (this.state.statusBack == 1){
+      this.willFocusListener.remove();
+    }
+  }
 
   loadDataFromServer() {
     that = this
@@ -65,7 +72,8 @@ class HomeScreen extends Component {
         .then(function (response) {
           // handle success
           console.log(response.data);
-          rounds = that.state.rounds
+          // rounds = that.state.rounds
+          rounds = [];
           for (var i = 0; i < response.data.length; i++) {
             rounds.push(response.data[i])
           }
@@ -209,7 +217,7 @@ class HomeScreen extends Component {
 
   async onRefresh() {
     if (!this.state.refreshing) {
-      await this.setState({ rounds: [] })
+      // await this.setState({ rounds: [] })
       this.loadDataFromServer();
     }
   }

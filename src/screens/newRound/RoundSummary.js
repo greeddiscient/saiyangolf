@@ -17,6 +17,10 @@ import {
   StyleProvider,
   Input
 } from 'native-base';
+import {
+  NavigationActions,
+  StackActions,
+} from 'react-navigation';
 import * as Progress from 'react-native-progress';
 import axios from 'axios';
 import moment from 'moment';
@@ -244,7 +248,7 @@ class RoundSummaryScreen extends React.Component {
       .then(function (response) {
         console.log(response);
         // this.setState({ refreshing: false });
-        that.props.navigation.navigate('Home')
+        this.renderHome()
       })
       .catch(function (error) {
         // this.setState({ refreshing: false });
@@ -393,7 +397,6 @@ class RoundSummaryScreen extends React.Component {
                   value={this.state.courseName}
                 />
               </View>
-
               <TouchableOpacity
                 style={styles.longSaveButton}
                 onPress={this.saveAPI.bind(this)}
@@ -424,8 +427,8 @@ class RoundSummaryScreen extends React.Component {
       { id: 2, name: 'Approach SG', value: this.state.approachSG },
       { id: 3, name: 'Wedge SG', value: this.state.wedgeSG },
       { id: 4, name: 'Chipping SG', value: this.state.chippingSG },
-      { id: 5, name: 'Putting SG', value: this.state.totalPuttingSG},
-      { id: 6, name: 'Total SG', value: this.state.totalSG},
+      { id: 5, name: 'Putting SG', value: this.state.totalPuttingSG },
+      { id: 6, name: 'Total SG', value: this.state.totalSG },
     ]
     var listBox = [];
     listData.map((data, i) => {
@@ -445,6 +448,21 @@ class RoundSummaryScreen extends React.Component {
         {listBox}
       </ScrollView>
     )
+  }
+
+  renderHome() {
+    const resetAction = StackActions.reset({
+      index: 0,
+      key: null,
+      actions: [
+        NavigationActions.navigate({
+           routeName: 'Home',
+           params: {statusBack: 1} 
+        })
+      ]
+    })
+
+    this.props.navigation.dispatch(resetAction)
   }
 }
 
