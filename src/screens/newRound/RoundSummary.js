@@ -46,7 +46,6 @@ class RoundSummaryScreen extends React.Component {
       roundDate: '',
       isModalVisible: false,
       refreshing: false,
-
     };
   }
 
@@ -299,47 +298,6 @@ class RoundSummaryScreen extends React.Component {
           )
         })}
 
-        <View style={styles.cardSummary}>
-          <View style={{ marginBottom: 20 }}>
-            <Text style={styles.textTitleCard}>Round Summary</Text>
-          </View>
-          <View style={{ flexDirection: 'row' }}>
-            <Text style={styles.baseBoldTextRS}>Driving Distance : </Text>
-            <Text style={styles.baseTextRS}>{this.state.drivingDistance}</Text>
-          </View>
-          <View style={{ flexDirection: 'row' }}>
-            <Text style={styles.baseBoldTextRS}>No of Putts : </Text>
-            <Text style={styles.baseTextRS}>{this.state.totalPutts}</Text>
-          </View>
-          <View style={{ flexDirection: 'row' }}>
-            <Text style={styles.baseBoldTextRS}>GIR : </Text>
-            <Text style={styles.baseTextRS}>{this.state.gir}</Text>
-          </View>
-          <View style={{ flexDirection: 'row' }}>
-            <Text style={styles.baseBoldTextRS}>Fairways : </Text>
-            <Text style={styles.baseTextRS}>{this.state.fairways}</Text>
-          </View>
-          <View style={{ flexDirection: 'row' }}>
-            <Text style={styles.baseBoldTextRS}>Approach SG : </Text>
-            <Text style={styles.baseTextRS}>{this.state.approachSG}</Text>
-          </View>
-          <View style={{ flexDirection: 'row' }}>
-            <Text style={styles.baseBoldTextRS}>Wedge SG : </Text>
-            <Text style={styles.baseTextRS}>{this.state.wedgeSG}</Text>
-          </View>
-          <View style={{ flexDirection: 'row' }}>
-            <Text style={styles.baseBoldTextRS}>Chipping SG : </Text>
-            <Text style={[styles.baseTextRS, { color: colors.black }]}>{this.state.chippingSG}</Text>
-          </View>
-          <View style={{ flexDirection: 'row' }}>
-            <Text style={styles.baseBoldTextRS}>Putting SG : </Text>
-            <Text style={styles.baseTextRS}>{this.state.totalPuttingSG}</Text>
-          </View>
-          <View style={{ flexDirection: 'row' }}>
-            <Text style={styles.baseBoldTextRS}>Total SG : </Text>
-            <Text style={styles.baseTextRS}>{this.state.totalSG}</Text>
-          </View>
-        </View>
         <View style={{ marginTop: 10, marginBottom: 20 }}>
           <TouchableOpacity
             style={styles.longButton}
@@ -350,8 +308,6 @@ class RoundSummaryScreen extends React.Component {
         </View>
       </View>
     )
-
-    console.log(this.props)
 
     return (
       <StyleProvider style={getTheme(material)}>
@@ -369,10 +325,34 @@ class RoundSummaryScreen extends React.Component {
                   />
                 </TouchableOpacity>
               </View>
-              <View style={styles.containerSubHeader}>
-                <View style={styles.contentSubHeader}>
-                  <Text style={styles.textTitleHistoryBold}>Round Summary</Text>
+              <View style={{ height: 310, backgroundColor: colors.primary, marginBottom: 40 }}>
+                <View style={{ width: width - 60, marginLeft: 30 }}>
+                  <View style={{ flexDirection: 'row', paddingTop: 10 }}>
+                    <View style={{ width: width - 60 }}>
+                      <Text style={styles.titleRHD}>Round Summary</Text>
+                    </View>
+                  </View>
+                  <View style={styles.lineHeaderRHD} />
+                  <View>
+                    <View style={{ flexDirection: 'row' }}>
+                      <Text style={styles.textSubTitleRHD}>Driving distance : </Text>
+                      <Text style={styles.textSubTitleRightRHD}>{this.state.drivingDistance}</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row' }}>
+                      <Text style={styles.textSubTitleRHD}>No of Putts : </Text>
+                      <Text style={styles.textSubTitleRightRHD}>{this.state.totalPutts}</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row' }}>
+                      <Text style={styles.textSubTitleRHD}>GIR : </Text>
+                      <Text style={styles.textSubTitleRightRHD}>{this.state.gir}</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row' }}>
+                      <Text style={styles.textSubTitleRHD}>Fairways : </Text>
+                      <Text style={styles.textSubTitleRightRHD}>{this.state.fairways}</Text>
+                    </View>
+                  </View>
                 </View>
+                {this.callLittleBox()}
               </View>
               <Content style={styles.contentBoxRS}>
                 <ScrollView>
@@ -429,19 +409,6 @@ class RoundSummaryScreen extends React.Component {
               />
             </View>
           </Modal>
-          {/* {this.state.refreshing == true && <View style={{  }}>
-            <Progress.Circle
-              style={{
-                position: 'absolute',
-                alignItems: 'center',
-                justifyContent: 'center',
-                opacity: 1
-              }}
-              indeterminate={this.state.refreshing}
-              direction="counter-clockwise"
-              color={'#CAA308'}
-            />
-          </View>} */}
         </Container>
       </StyleProvider>
     );
@@ -449,6 +416,35 @@ class RoundSummaryScreen extends React.Component {
 
   onCloseModal() {
     this.setState({ isModalVisible: false })
+  }
+
+  callLittleBox() {
+    var listData = [
+      { id: 1, name: 'Driving SG', value: this.state.drivingSG },
+      { id: 2, name: 'Approach SG', value: this.state.approachSG },
+      { id: 3, name: 'Wedge SG', value: this.state.wedgeSG },
+      { id: 4, name: 'Chipping SG', value: this.state.chippingSG },
+      { id: 5, name: 'Putting SG', value: this.state.totalPuttingSG},
+      { id: 6, name: 'Total SG', value: this.state.totalSG},
+    ]
+    var listBox = [];
+    listData.map((data, i) => {
+      listBox.push(
+        <View key={i} style={[styles.containerBoxHorizontal, { marginRight: data.id == 6 ? 20 : 10 }]}>
+          <Text style={styles.textTitleSmallBoxRHD}>{data.value}</Text>
+          <Text style={styles.textSmallBoxRHD}>{data.name}</Text>
+        </View>
+      )
+    })
+    return (
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        style={{ width: width - 20, marginLeft: 20, marginTop: 20 }}
+      >
+        {listBox}
+      </ScrollView>
+    )
   }
 }
 
