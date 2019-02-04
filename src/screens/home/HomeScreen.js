@@ -209,6 +209,7 @@ class HomeScreen extends Component {
 
   async onRefresh() {
     if (!this.state.refreshing) {
+      await this.setState({ rounds: [] })
       this.loadDataFromServer();
     }
   }
