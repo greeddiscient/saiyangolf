@@ -151,7 +151,7 @@ class RoundHistoryScreen extends React.Component {
         .then(function (response) {
           // handle success
           console.log(response.data);
-          rounds = that.state.rounds
+          rounds = []
           for (var i = 0; i < response.data.length; i++) {
             rounds.push(response.data[i])
           }

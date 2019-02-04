@@ -94,7 +94,7 @@ class RoundHistoryDetailsScreen extends React.Component {
                   />
                 </TouchableOpacity>
               </View>
-              <View style={{ height: 290, backgroundColor: colors.primary, marginBottom: 40 }}>
+              <View style={{ height: 310, backgroundColor: colors.primary, marginBottom: 40 }}>
                 <View style={{ width: width - 60, marginLeft: 30 }}>
                   <View style={{ flexDirection: 'row', paddingTop: 10 }}>
                     <View style={{ width: 100 }}>
@@ -120,6 +120,10 @@ class RoundHistoryDetailsScreen extends React.Component {
                       <Text style={styles.textSubTitleRHD}>GIR : </Text>
                       <Text style={styles.textSubTitleRightRHD}>{this.state.dataDetail.gir}</Text>
                     </View>
+                    <View style={{ flexDirection: 'row' }}>
+                      <Text style={styles.textSubTitleRHD}>Fairways : </Text>
+                      <Text style={styles.textSubTitleRightRHD}>{this.state.dataDetail.fairways}</Text>
+                    </View>
                   </View>
                 </View>
                 {this.callLittleBox()}
@@ -138,18 +142,17 @@ class RoundHistoryDetailsScreen extends React.Component {
 
   callLittleBox() {
     var listData = [
-      { id: 1, name: 'Fairways', value: this.state.dataDetail.fairways },
-      { id: 2, name: 'Driving SG', value: this.state.dataDetail.drivingSG },
-      { id: 3, name: 'Approach SG', value: this.state.dataDetail.approachSG },
-      { id: 4, name: 'Wedge SG', value: this.state.dataDetail.wedgeSG },
-      { id: 5, name: 'Chipping SG', value: this.state.dataDetail.chippingSG },
-      { id: 6, name: 'Putting SG', value: this.state.dataDetail.totalPuttingSG},
-      { id: 7, name: 'Total SG', value: this.state.dataDetail.totalSG},
+      { id: 1, name: 'Driving SG', value: this.state.dataDetail.drivingSG },
+      { id: 2, name: 'Approach SG', value: this.state.dataDetail.approachSG },
+      { id: 3, name: 'Wedge SG', value: this.state.dataDetail.wedgeSG },
+      { id: 4, name: 'Chipping SG', value: this.state.dataDetail.chippingSG },
+      { id: 5, name: 'Putting SG', value: this.state.dataDetail.totalPuttingSG},
+      { id: 6, name: 'Total SG', value: this.state.dataDetail.totalSG},
     ]
     var listBox = [];
     listData.map((data, i) => {
       listBox.push(
-        <View key={i} style={[styles.containerBoxHorizontal, { marginRight: data.id == 7 ? 20 : 10 }]}>
+        <View key={i} style={[styles.containerBoxHorizontal, { marginRight: data.id == 6 ? 20 : 10 }]}>
           <Text style={styles.textTitleSmallBoxRHD}>{data.value}</Text>
           <Text style={styles.textSmallBoxRHD}>{data.name}</Text>
         </View>
