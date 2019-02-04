@@ -7,7 +7,8 @@ import {
   Button,
   Image,
   Dimensions,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  BackHandler
 } from 'react-native';
 import {
   Text,
@@ -44,8 +45,21 @@ class EnterRoundScreen extends React.Component {
       onGreen: false,
       holeFinished: false,
       hazard: 0,
-      isModalVisible: false
+      isModalVisible: false,
+      // holeNumber: props.holeNumber != null ? props.holeNumber : 1,
     };
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.backPressed);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.backPressed);
+  }
+
+  backPressed = () => {
+    return true;
   }
 
   addShots(shotObj) {
