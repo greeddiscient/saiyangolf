@@ -56,7 +56,6 @@ class Login extends Component {
 
         this.loginCheck();
       })
-
   }
 
   componentDidMount() {
@@ -168,17 +167,18 @@ class Login extends Component {
                 </View>
               </View>
             </Content>
+            {this.state.visibleLoading && <Progress.Circle
+              style={styles.loading}
+              indeterminate={this.state.visibleLoading}
+              direction="counter-clockwise"
+              color={colors.white}
+            />
+            }
           </Container>
         </StyleProvider>
       );
     }
   }
-
-  // loginPress() {
-  //   Function.Home(
-  //     this.props.navigation
-  //   )
-  // }
 
   onRegisterPress() {
     Function.Register(
