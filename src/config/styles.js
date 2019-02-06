@@ -247,6 +247,15 @@ export default StyleSheet.create({
     justifyContent: 'center',
     opacity: 1
   },
+  loading: {
+    width: width,
+    height: height,
+    position: "absolute",
+    backgroundColor: colors.secondary,
+    opacity: 0.5,
+    alignItems: "center",
+    justifyContent: "center"
+  },
 
   //RoundHistory
   cardHistory: {
