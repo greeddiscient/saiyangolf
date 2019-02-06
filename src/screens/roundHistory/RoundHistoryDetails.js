@@ -15,6 +15,7 @@ import {
   Content,
   StyleProvider,
 } from 'native-base';
+import moment from 'moment';
 
 import colors from '../../config/colors';
 import styles from '../../config/styles';
@@ -102,7 +103,7 @@ class RoundHistoryDetailsScreen extends React.Component {
                     </View>
                     <View style={{ width: width - 170 }}>
                       <Text style={styles.textTitleRightRH}>
-                        {this.state.dataDetail.courseName} {this.state.dataDetail.roundDate}
+                        {this.state.dataDetail.courseName} {moment(this.state.dataDetail.roundDate).format("MMM Do YYYY")}
                       </Text>
                     </View>
                   </View>

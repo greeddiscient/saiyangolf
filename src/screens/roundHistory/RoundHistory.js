@@ -19,6 +19,7 @@ import {
 import * as Progress from 'react-native-progress';
 import { sgData } from '../../data/sgData';
 import axios from 'axios';
+import moment from 'moment';
 
 import colors from '../../config/colors';
 import styles from '../../config/styles';
@@ -55,7 +56,7 @@ class RoundHistoryScreen extends React.Component {
                 <Text style={styles.textTitleCard} >Round {rounds[i].roundNumber}</Text>
               </View>
               <View style={{ width: this.state.saveWidth - 180 }}>
-                <Text style={styles.textTitleCardRight}>{rounds[i].courseName} {rounds[i].roundDate}</Text>
+                <Text style={styles.textTitleCardRight}>{rounds[i].courseName} {moment(rounds[i].roundDate).format("MMM Do YYYY")}</Text>
               </View>
             </View>
             <Text style={styles.textCard}>Driving distance : {rounds[i].drivingDistance}</Text>
@@ -143,45 +144,39 @@ class RoundHistoryScreen extends React.Component {
     })
   }
 
-  loadDataFromServer() {
-    that = this
-    if (this.state.refreshing == false) {
+  async loadDataFromServer() {
+    if (!this.state.refreshing) {
       this.setState({ refreshing: true });
-      axios.get('http://saiyan-api.herokuapp.com/api/rounds')
-        .then(function (response) {
-          // handle success
-          console.log(response.data);
-          rounds = []
-          for (var i = 0; i < response.data.length; i++) {
-            rounds.push(response.data[i])
-          }
 
-          var sorted_round = rounds.sort((a, b) => {
-            return (
-              new Date(moment(moment(a.roundDate, 'MMM Do YYYY')).format('YYYY-MM-DD')).getTime() -
-              new Date(moment(moment(b.roundDate, 'MMM Do YYYY')).format('YYYY-MM-DD')).getTime()
-            )
-          }).reverse();
+      const response = await Networking.getDataRoundHistory()
+      if (response != null) {
+        let rounds = []
+        for (var i = 0; i < response.length; i++) {
+          rounds.push(response[i])
+        }
 
-          var finalSort = sorted_round.map((data, i) => {
-            return { ...data, roundNumber: sorted_round.length - i };
-          });
+        var sorted_round = rounds.sort((a, b) => {
+          return (
+            new Date(moment(a.roundDate).format('YYYY-MM-DD')).getTime() -
+            new Date(moment(b.roundDate).format('YYYY-MM-DD')).getTime()
+          )
+        }).reverse();
 
-          console.log("after loop", rounds)
-          that.setState({
-            rounds: finalSort,
-            refreshing: false,
-            isloading: false,
-          })
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-          that.setState({
-            refreshing: false,
-            isloading: false,
-          })
-        })
+        var finalSort = sorted_round.map((data, i) => {
+          return { ...data, roundNumber: sorted_round.length - i };
+        });
+
+        this.setState({
+          rounds: finalSort,
+          refreshing: false,
+          isloading: false,
+        });
+      } else {
+        this.setState({
+          refreshing: false,
+          isloading: false,
+        });
+      }
     }
   }
 

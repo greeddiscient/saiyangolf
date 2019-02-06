@@ -69,8 +69,7 @@ async function Login(email, password) {
 async function Register(data) {
   var response = null;
   await RNFetchBlob.fetch('POST', baseUrl + '/api/users/register', {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
+    getHeaderNoToken()
   }, JSON.stringify({
     name: data.name,
     email: data.email,

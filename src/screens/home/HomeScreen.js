@@ -12,6 +12,7 @@ import {
   RefreshControl,
   ScrollView,
   AsyncStorage,
+  Alert,
 } from 'react-native';
 import {
   Text,
@@ -21,6 +22,10 @@ import {
   Icon,
   List
 } from 'native-base';
+import {
+  NavigationActions,
+  StackActions,
+} from 'react-navigation';
 import * as Progress from 'react-native-progress';
 import axios from 'axios';
 import moment from 'moment';
@@ -30,6 +35,7 @@ import styles from '../../config/styles';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
 import ImageUrl from '../../config/images';
+import Networking from '../../api/Networking';
 
 const { width, height } = Dimensions.get("window");
 class HomeScreen extends Component {
@@ -45,67 +51,61 @@ class HomeScreen extends Component {
     this.loadDataFromServer();
   }
 
-    componentDidMount() {
-      this.willFocusListener = this.props.navigation.addListener(
-        'willFocus',
-        () => {
-          if (this.state.statusBack == 1){
-            this.onRefresh()
-          }
-
-          this.setState({ statusBack: 0 })
+  componentDidMount() {
+    this.willFocusListener = this.props.navigation.addListener(
+      'willFocus',
+      () => {
+        if (this.state.statusBack == 1) {
+          this.onRefresh()
         }
-      );
+
+        this.setState({ statusBack: 0 })
+      }
+    );
   }
 
   componentWillUnmount() {
-    if (this.state.statusBack == 1){
+    if (this.state.statusBack == 1) {
       this.willFocusListener.remove();
     }
   }
 
-  loadDataFromServer() {
-    that = this
-    if (this.state.refreshing == false) {
+  async loadDataFromServer() {
+    if (!this.state.refreshing) {
       this.setState({ refreshing: true });
-      axios.get('http://saiyan-api.herokuapp.com/api/rounds')
-        .then(function (response) {
-          // handle success
-          console.log(response.data);
-          // rounds = that.state.rounds
-          rounds = [];
-          for (var i = 0; i < response.data.length; i++) {
-            rounds.push(response.data[i])
-          }
 
-          var sorted_round = rounds.sort((a, b) => {
-            return (
-              new Date(moment(moment(a.roundDate, 'MMM Do YYYY')).format('YYYY-MM-DD')).getTime() -
-              new Date(moment(moment(b.roundDate, 'MMM Do YYYY')).format('YYYY-MM-DD')).getTime()
-            )
-          }).reverse();
+      const response = await Networking.getDataRoundHistory()
+      if (response != null) {
+        let rounds = []
+        for (var i = 0; i < response.length; i++) {
+          rounds.push(response[i])
+        }
 
-          var finalSort = sorted_round.map((data, i) => {
-            return { ...data, roundNumber: sorted_round.length - i };
-          });
+        var sorted_round = rounds.sort((a, b) => {
+          return (
+            new Date(moment(a.roundDate).format('YYYY-MM-DD')).getTime() -
+            new Date(moment(b.roundDate).format('YYYY-MM-DD')).getTime()
+          )
+        }).reverse();
 
-          console.log("after loop", rounds)
-          that.setState({
-            rounds: finalSort,
-            refreshing: false,
-            isloading: false,
-          })
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-          that.setState({
-            refreshing: false,
-            isloading: false,
-          })
-        })
+        var finalSort = sorted_round.map((data, i) => {
+          return { ...data, roundNumber: sorted_round.length - i };
+        });
+
+        this.setState({
+          rounds: finalSort,
+          refreshing: false,
+          isloading: false,
+        });
+      } else {
+        this.setState({
+          refreshing: false,
+          isloading: false,
+        });
+      }
     }
   }
+
 
   render() {
     return (
@@ -121,6 +121,9 @@ class HomeScreen extends Component {
               colors={[colors.white, colors.white, colors.white]}
             />
           }>
+            {/* <View style={{height: 50, alignItems: 'flex-end'}}>
+            <Icon name='power-settings-new' style={{ marginRight: 10 }} />
+          </View> */}
             <View style={{ marginTop: 50, marginLeft: 40 }}>
               <Text style={styles.titleHeaderHome}>
                 Welcome back <Text style={styles.titleHeaderBoldHome}>golfers!</Text>
@@ -182,6 +185,19 @@ class HomeScreen extends Component {
                   }
                 </View>
               </View>
+              <TouchableOpacity
+                style={styles.buttonNewRound}
+                onPress={() => Alert.alert(
+                  'Sign out',
+                  'Do you want to logout?',
+                  [
+                    { text: 'Cancel', onPress: () => console.log('Cancel Pressed!') },
+                    { text: 'OK', onPress: () => this.logoutButton() },
+                  ]
+                )}
+              >
+                <Text style={styles.buttonNew}>Logout</Text>
+              </TouchableOpacity>
             </View>
           </Content>
         </Container>
@@ -199,7 +215,7 @@ class HomeScreen extends Component {
             </View>
             <View style={{ width: this.state.saveWidth - 180 }}>
               <Text style={styles.textTitleCardRight}>
-                {rowData.courseName} {rowData.roundDate}
+                {rowData.courseName} {moment(rowData.roundDate).format("MMM Do YYYY")}
               </Text>
             </View>
           </View>
@@ -219,6 +235,28 @@ class HomeScreen extends Component {
     if (!this.state.refreshing) {
       // await this.setState({ rounds: [] })
       this.loadDataFromServer();
+    }
+  }
+
+  logoutButton() {
+    try {
+      var key = [
+        "@saiyanGolfStore:tokens",
+      ];
+      AsyncStorage.multiRemove(key, err => {
+        if (err == null) {
+          const resetAction = StackActions.reset({
+            index: 0,
+            key: null,
+            actions: [
+              NavigationActions.navigate({ routeName: 'Login' })
+            ]
+          })
+          this.props.navigation.dispatch(resetAction);
+        }
+      })
+    } catch (error) {
+      // Error saving data
     }
   }
 
