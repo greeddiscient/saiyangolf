@@ -33,6 +33,19 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+  
+  
+  [[UIApplication sharedApplication] setStatusBarHidden:NO];
+  [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+  
+  UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+  
+  if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+    
+    statusBar.backgroundColor = [UIColor colorWithRed:(214/255.0) green:(174/255.0) blue:(3/255.0) alpha:1.0];//set whatever color you like
+  }
+
   return YES;
 }
 
