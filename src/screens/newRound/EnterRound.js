@@ -8,7 +8,8 @@ import {
   Image,
   Dimensions,
   KeyboardAvoidingView,
-  BackHandler
+  BackHandler,
+  Platform,
 } from 'react-native';
 import {
   Text,
@@ -187,10 +188,13 @@ class EnterRoundScreen extends React.Component {
     return (
       <StyleProvider style={getTheme(material)}>
         <Container style={{ backgroundColor: colors.lightGrey2 }}>
-          <View style={[styles.headerContainerCustom, { height: 150 }]}>
-            <View>
+        <View style={[styles.headerContainerER, { 
+            height: Platform.OS === 'ios' ? 180 : 150 
+            }]}>
+            <View style={{width: width-140, marginTop: Platform.OS === 'ios' ? 30 : 0}}>
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
+                style={{height: 50, justifyContent: 'center'}}
               >
                 <Image
                   resizeMode='contain'
@@ -198,16 +202,16 @@ class EnterRoundScreen extends React.Component {
                   style={{ width: 20, height: 20 }}
                 />
               </TouchableOpacity>
-              <View style={{ marginLeft: 10, marginTop: 20 }}>
+              <View style={{ marginLeft: 10, height: 100}}>
                 <Text style={styles.textHeaderER}>Enter a</Text>
                 <Text style={styles.textBoldHeaderER}>new round</Text>
               </View>
             </View>
-            <View>
+            <View >
               <Image
                 resizeMode='contain'
                 source={ImageUrl.golferImg}
-                style={{ width: 100, height: 150 }}
+                style={{ width: 100, height: Platform.OS === 'ios' ? 180 : 150 }}
               />
             </View>
           </View>

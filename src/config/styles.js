@@ -435,6 +435,14 @@ export default StyleSheet.create({
   },
 
   //EnterRound
+  headerContainerER: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    // alignItems: 'center',
+    // height: 50,
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
   buttonSmall: {
     width: (width - 60) / 3,
     borderRadius: 10,

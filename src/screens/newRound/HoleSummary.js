@@ -192,19 +192,28 @@ class HoleSummary extends Component {
     })
   }
 
-  endRound() {
+  async endRound() {
     const { navigation } = this.props;
     const holeNumber = navigation.getParam('holeNumber', 1)
     roundSummary = this.state.roundSummary
     holeSummary = this.state.holeSummary
 
-    if ((holeNumber - 1) == roundSummary.length) {
+    roundSummaryNew = []
+
+    if (roundSummary.length == (holeNumber - 1)) {
       roundSummary.push(holeSummary)
       this.setState({
         roundSummary: roundSummary
       })
     }
-    console.log("roundSummaryEndRound", this.state.roundSummary)
+    else if(roundSummary.length > holeNumber){
+      for(let i=0; i<holeNumber; i++){
+        roundSummaryNew.push(roundSummary[i])
+      }
+
+      await this.setState({roundSummary: roundSummaryNew})
+    }
+
     this.props.navigation.push('RoundDetails', {
       roundSummary: this.state.roundSummary
     })
