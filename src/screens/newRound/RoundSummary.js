@@ -4,11 +4,13 @@ import {
   View,
   TouchableHighlight,
   TouchableOpacity,
+  AsyncStorage,
   Button,
   Image,
   SafeAreaView,
   Dimensions,
-  Modal
+  Modal,
+  Alert,
 } from 'react-native';
 import {
   Text,
@@ -24,12 +26,14 @@ import {
 import * as Progress from 'react-native-progress';
 import axios from 'axios';
 import moment from 'moment';
+import ModalWrapper from 'react-native-modal-wrapper';
 
 import colors from '../../config/colors';
 import styles from '../../config/styles';
 import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
 import ImageUrl from '../../config/images';
+import Networking from '../../api/Networking';
 
 var { width, height } = Dimensions.get("window");
 class RoundSummaryScreen extends React.Component {
@@ -50,6 +54,8 @@ class RoundSummaryScreen extends React.Component {
       roundDate: '',
       isModalVisible: false,
       refreshing: false,
+      visibleLoading: false,
+      visibleSave: false,
     };
   }
 
@@ -133,12 +139,13 @@ class RoundSummaryScreen extends React.Component {
 
       }
       else {
+        var drivingSGNew = roundSummary[i].shots[0].sg != null || roundSummary[i].shots[0].sg != NaN ? roundSummary[i].shots[0].sg : 0
         drivingSG = drivingSG + parseFloat(roundSummary[i].shots[0].sg)
       }
     }
     drivingSG = drivingSG.toFixed(2)
     this.setState({
-      drivingSG: drivingSG
+      drivingSG: parseFloat(drivingSG)
     })
   }
 
@@ -222,39 +229,59 @@ class RoundSummaryScreen extends React.Component {
     })
   }
 
-  saveAPI() {
-    // this.props.navigation.navigate('EnterRound')
-    const { navigation } = this.props;
-    const roundSummary = navigation.getParam('roundSummary', [])
-    console.log("saveRoundPressed")
-    that = this
-    // if (this.state.refreshing == false) {
-    //   this.setState({ refreshing: true, isModalVisible: false });
-    axios.post('http://saiyan-api.herokuapp.com/api/new_round', {
-      drivingDistance: this.state.drivingDistance,
-      totalPutts: this.state.totalPutts,
-      gir: this.state.gir,
-      fairways: this.state.fairways,
-      drivingSG: this.state.drivingSG,
-      approachSG: this.state.approachSG,
-      wedgeSG: this.state.wedgeSG,
-      chippingSG: this.state.chippingSG,
-      totalPuttingSG: this.state.totalPuttingSG,
-      totalSG: this.state.totalSG,
-      roundSummary: roundSummary,
-      courseName: this.state.courseName,
-      roundDate: this.state.roundDate
-    })
-      .then(function (response) {
-        console.log(response);
-        // this.setState({ refreshing: false });
-        this.renderHome()
-      })
-      .catch(function (error) {
-        // this.setState({ refreshing: false });
-        console.log(error);
-      });
-    // }
+  valueChecker() {
+    if (this.state.courseName != '') {
+      return true
+    }
+    else {
+      if (this.state.courseName == '') {
+        Alert.alert('Error', 'Please fill course name field', [{ text: 'Ok' }])
+        return false
+      }
+      else {
+        Alert.alert('Error', 'Please fill empty value', [{ text: 'Ok' }])
+        return false
+      }
+    }
+  }
+
+  async saveAPI() {
+    if (this.valueChecker() == true && this.state.visibleLoading == false) {
+      this.setState({ isModalVisible: false, visibleLoading: true });
+
+      const dataSend = {
+        drivingDistance: (isNaN(this.state.drivingDistance) ? 0 : this.state.drivingDistance),
+        totalPutts: (isNaN(this.state.totalPutts) ? 0 : this.state.totalPutts),
+        gir: (isNaN(this.state.gir) ? 0 : this.state.gir),
+        fairways: (isNaN(this.state.fairways) ? 0 : this.state.fairways),
+        drivingSG: (isNaN(this.state.drivingSG) ? 0 : this.state.drivingSG),
+        approachSG: (isNaN(this.state.approachSG) ? 0 : this.state.approachSG),
+        wedgeSG: (isNaN(this.state.wedgeSG) ? 0 : this.state.wedgeSG),
+        chippingSG: (isNaN(this.state.chippingSG) ? 0 : this.state.chippingSG),
+        totalPuttingSG: (isNaN(this.state.totalPuttingSG) ? 0 : this.state.totalPuttingSG),
+        totalSG: (isNaN(this.state.totalSG) ? 0 : this.state.totalSG),
+        roundSummary: roundSummary,
+        courseName: this.state.courseName,
+      }
+
+      const response = await Networking.sendRound(dataSend)
+      if (response == 'dataSend') {
+        console.log('success send first, '+ JSON.stringify(response))
+        this.setState({
+          refreshing: false,
+          isLoading: false,
+          visibleLoading: false,
+          visibleSave: true
+        });
+      } else {
+        console.log('success send two, '+ JSON.stringify(response))
+        this.setState({
+          refreshing: false,
+          isLoading: false,
+          visibleLoading: false
+        });
+      }
+    }
   }
 
   saveRound() {
@@ -279,9 +306,7 @@ class RoundSummaryScreen extends React.Component {
       <View>
         {roundSummary.map((data, i) => {
           return (
-            <View key={i} style={[styles.cardRS,
-              // {height: data.shots != null && data.shots.length > 1 ? 170+(data.shots.length*40) : 210}
-            ]}>
+            <View key={i} style={styles.cardRS}>
               <Text style={styles.textTitleCard}>Hole {i + 1}</Text>
               {data.shots.map((dataShot, j) => {
                 return (
@@ -412,6 +437,33 @@ class RoundSummaryScreen extends React.Component {
               />
             </View>
           </Modal>
+          <ModalWrapper
+            style={styles.containerModalRS}
+            visible={this.state.visibleSave}>
+            <View style={styles.containerContentModalRS}>
+              <View style={{ justifyContent: 'center', borderBottomWidth: 0 }}>
+                <View>
+                  <Text style={styles.textSubTitleModalRS}>Success</Text>
+                  <Text style={styles.textSubTitleRightRHD}>Round has been successfully saved.</Text>
+                </View>
+              </View>
+              <View style={styles.boxTwoModalRS}>
+                <TouchableOpacity
+                  onPress={() => this.renderHome()}
+                  style={styles.buttonModalRS}
+                >
+                  <Text style={styles.textSubTitleRHD}>Ok</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </ModalWrapper>
+          {this.state.visibleLoading && <Progress.Circle
+            style={styles.loading}
+            indeterminate={this.state.visibleLoading}
+            direction="counter-clockwise"
+            color={colors.white}
+          />
+          }
         </Container>
       </StyleProvider>
     );
@@ -451,13 +503,14 @@ class RoundSummaryScreen extends React.Component {
   }
 
   renderHome() {
+    this.setState({ visibleSave: false })
     const resetAction = StackActions.reset({
       index: 0,
       key: null,
       actions: [
         NavigationActions.navigate({
-           routeName: 'Home',
-           params: {statusBack: 1} 
+          routeName: 'Home',
+          params: { statusBack: 1 }
         })
       ]
     })

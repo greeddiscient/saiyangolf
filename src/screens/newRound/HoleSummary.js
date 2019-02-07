@@ -107,16 +107,16 @@ class HoleSummary extends Component {
       score: score,
       par: this.props.holePar,
       shots: [],
-      putts: putts,
-      puttingSG: sgArray[sgArray.length - 2],
-      sg: sgArray[sgArray.length - 1],
-      drivingDistance: drivingDistance
+      putts: (isNaN(putts) ? 0 : putts),
+      puttingSG: (isNaN(sgArray[sgArray.length - 2]) ? 0 : sgArray[sgArray.length - 2]),
+      sg: (isNaN(sgArray[sgArray.length - 1]) ? 0 : sgArray[sgArray.length - 1]),
+      drivingDistance: (isNaN(drivingDistance) ? 0 : drivingDistance)
     }
     for (var i = 0; i < sgArray.length - 2; i++) {
       holeSummary.shots.push({
         lie: this.state.shots[i + 1].lie,
-        distance: this.state.shots[i + 1].distance,
-        sg: sgArray[i]
+        distance: (isNaN(this.state.shots[i + 1].distance) ? 0 : this.state.shots[i + 1].distance),
+        sg: (isNaN(sgArray[i]) ? 0 : sgArray[i])
       })
 
     }

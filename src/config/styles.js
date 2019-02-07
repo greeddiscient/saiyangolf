@@ -606,6 +606,36 @@ export default StyleSheet.create({
     alignItems: 'flex-end', 
     marginTop: 20
   },
+  textSubTitleModalRS: {
+    fontFamily: fonts.custom.boldOs,
+    fontSize: 20,
+    textAlign: 'center'
+  },
+  containerModalRS: {
+    width: width-30, 
+    borderRadius:10, 
+    justifyContent:'center', 
+    alignItems:'center'
+  },
+  containerContentModalRS: {
+    marginTop:20, 
+    flexDirection: 'column', 
+    justifyContent:'center', 
+    alignItems:'center'
+  },
+  boxTwoModalRS: {
+    flexDirection:'row', 
+    justifyContent: 'center', 
+    marginTop: 30, 
+    marginBottom:20
+  },
+  buttonModalRS: {
+    width: 100, 
+    height: 40, 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    backgroundColor: colors.primary
+  },
 
   //Login
   footerContent: {

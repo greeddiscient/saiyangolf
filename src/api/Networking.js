@@ -3,6 +3,7 @@ import RNFetchBlob from 'react-native-fetch-blob';
 import Function from '../utilities/Function';
 import Header from './Header';
 import moment from 'moment';
+import axios from 'axios';
 
 const protocol = "https:"
 const baseUrl = "https://saiyan-api-v2.herokuapp.com"
@@ -25,14 +26,14 @@ async function Login(email, password) {
           var data = json
           AsyncStorage.setItem('@saiyanGolfStore:tokens', json['token']);
           response = data
-        }else{
+        } else {
           setTimeout(() => Alert.alert('error', json.errors.user), 100);
           response = null;
         }
       }
       else {
-        console.log('error login..., '+JSON.stringify(json))
-        console.log('status login, '+res.info().status)
+        console.log('error login..., ' + JSON.stringify(json))
+        console.log('status login, ' + res.info().status)
         setTimeout(() => Alert.alert('error', json.errors.user), 100);
         response = null;
       }
@@ -68,13 +69,16 @@ async function Login(email, password) {
 
 async function Register(data) {
   var response = null;
-  await RNFetchBlob.fetch('POST', baseUrl + '/api/users/register', {
-    getHeaderNoToken()
-  }, JSON.stringify({
-    name: data.name,
-    email: data.email,
-    password: data.password,
-  }))
+  await RNFetchBlob.fetch(
+    'POST',
+    baseUrl + '/api/users/register',
+    Header.getHeaderNoToken(),
+
+    JSON.stringify({
+      name: data.name,
+      email: data.email,
+      password: data.password,
+    }))
     // when response status code is 200
     .then((res) => {
       let text = res.text();
@@ -150,14 +154,14 @@ async function getDataRoundHistory() {
         let json = res.json()
 
         if (res.info().status < 300) {
-          if(json.success == true){
+          if (json.success == true) {
             data = json['data'];
             AsyncStorage.setItem('@saiyanGolfStore:roundHistory', JSON.stringify(data));
             response = data;
-          }else{
+          } else {
             response = null
           }
-         
+
         }
         else {
           response = null
@@ -173,10 +177,72 @@ async function getDataRoundHistory() {
   }
 }
 
+async function sendRound(dataPost) {
+  var responseData = null;
+  var token = null;
+
+  await AsyncStorage.getItem('@saiyanGolfStore:tokens', (err, result) => {
+    if (result != null) {
+      token = result;
+    }
+  });
+
+  if (token != null && token != "") {
+    console.log('send data to server, ' + JSON.stringify(dataPost))
+    axios({
+      method: "post",
+      url: `https://saiyan-api-v2.herokuapp.com/api/rounds/`,
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": token
+      },
+      data: JSON.stringify(dataPost)
+    })
+      .then(function (response) {
+        console.log('response,.. ' + response);
+        console.log('response,.. ' + JSON.stringify(response));
+        if (response.status < 300) {
+          console.log('success send in newtwork, '+ JSON.stringify(response))
+          responseData = 'dataSend'
+        } else {
+          setTimeout(() => Alert.alert('error', JSON.stringify(response)), 100);
+          responseData = null
+        }
+      })
+      .catch(function (error) {
+        console.log('error post, ' + error);
+        if (error == null || error == '') {
+          setTimeout(() => Alert.alert(
+            'Failed',
+            'Something wrong. Please try again',
+            [
+              { text: 'Ok' },
+            ]
+          ), 100);
+          responseData = null;
+        }
+        else {
+          setTimeout(() => Alert.alert(
+            'Failed',
+            error.toString(),
+            [
+              { text: 'Ok' },
+            ]
+          ), 100);
+          responseData = null;
+        }
+      });
+
+    return responseData;
+
+  }
+}
+
 export default {
   protocol,
   baseUrl,
   Register,
   Login,
-  getDataRoundHistory
+  getDataRoundHistory,
+  sendRound,
 }
