@@ -48,6 +48,7 @@ class EnterRoundScreen extends React.Component {
       hazard: 0,
       isModalVisible: false,
       // holeNumber: props.holeNumber != null ? props.holeNumber : 1,
+      distancePutt: 0
     };
   }
 
@@ -93,10 +94,12 @@ class EnterRoundScreen extends React.Component {
   }
 
   finishHole(distance, putts) {
+    console.log('data distance, '+ distance)
     this.setState({
       holeFinished: true,
       noOfPutts: putts,
-      puttDistance: distance
+      puttDistance: distance,
+      distancePutt: distance
     })
   }
 
@@ -277,6 +280,7 @@ class EnterRoundScreen extends React.Component {
                   shots={this.state.shots}
                   hazard={this.state.hazard}
                   holePar={this.state.holePar}
+                  distancePutt={this.state.distancePutt}
                 />
                 :
                 null

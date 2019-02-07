@@ -27,7 +27,8 @@ class HoleSummary extends Component {
       drivingDistance: 0,
       holeSummary: [],
       isModalVisible: false,
-      courseName: ''
+      courseName: '',
+      distancePutt: this.props.distancePutt,
     };
   }
 
@@ -110,7 +111,8 @@ class HoleSummary extends Component {
       putts: (isNaN(putts) ? 0 : putts),
       puttingSG: (isNaN(sgArray[sgArray.length - 2]) ? 0 : sgArray[sgArray.length - 2]),
       sg: (isNaN(sgArray[sgArray.length - 1]) ? 0 : sgArray[sgArray.length - 1]),
-      drivingDistance: (isNaN(drivingDistance) ? 0 : drivingDistance)
+      drivingDistance: (isNaN(drivingDistance) ? 0 : drivingDistance),
+      distancePutt: (isNaN(this.state.distancePutt) ? 0 : this.state.distancePutt)
     }
     for (var i = 0; i < sgArray.length - 2; i++) {
       holeSummary.shots.push({

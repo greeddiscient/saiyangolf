@@ -264,6 +264,8 @@ class RoundSummaryScreen extends React.Component {
         courseName: this.state.courseName,
       }
 
+      console.log('data send to server in round summary, '+JSON.stringify(dataSend))
+
       const response = await Networking.sendRound(dataSend)
       if (response == 'dataSend') {
         console.log('success send first, '+ JSON.stringify(response))
