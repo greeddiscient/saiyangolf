@@ -189,7 +189,7 @@ async function sendRound(dataPost) {
 
   if (token != null && token != "") {
     console.log('send data to server, ' + JSON.stringify(dataPost))
-    axios({
+    await axios({
       method: "post",
       url: `https://saiyan-api-v2.herokuapp.com/api/rounds/`,
       headers: {
@@ -198,7 +198,7 @@ async function sendRound(dataPost) {
       },
       data: JSON.stringify(dataPost)
     })
-      .then(function (response) {
+      .then((response) => {
         console.log('response,.. ' + response);
         console.log('response,.. ' + JSON.stringify(response));
         if (response.status < 300) {
@@ -209,7 +209,7 @@ async function sendRound(dataPost) {
           responseData = null
         }
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log('error post, ' + error);
         if (error == null || error == '') {
           setTimeout(() => Alert.alert(
@@ -233,6 +233,7 @@ async function sendRound(dataPost) {
         }
       });
 
+      console.log('return response post, '+ responseData)
     return responseData;
 
   }

@@ -1,3 +1,23 @@
-PODFILE CHECKSUM: 33dd04f89f2b275688b577cfefac134f6c73c87c
+PODS:
+  - react-native-fetch-blob (0.10.6):
+    - React/Core
+  - React/Core (0.11.0)
+
+DEPENDENCIES:
+  - react-native-fetch-blob (from `../node_modules/react-native-fetch-blob`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - React
+
+EXTERNAL SOURCES:
+  react-native-fetch-blob:
+    :path: "../node_modules/react-native-fetch-blob"
+
+SPEC CHECKSUMS:
+  React: ab1a2e21deb34965c38328d5ec40cc7d12c6050a
+  react-native-fetch-blob: 63394b1d7b0781547b3e4463b3195790177b1222
+
+PODFILE CHECKSUM: 093b54f07df9b66e62ef0aa26e876939f131abcc
 
 COCOAPODS: 1.5.3
