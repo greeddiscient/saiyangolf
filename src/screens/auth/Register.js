@@ -40,7 +40,7 @@ class Register extends Component {
     super(props);
     this.state = {
       rounds: [],
-      name: '',
+      username: '',
       email: '',
       password: '',
       confirmPass: '',
@@ -115,12 +115,12 @@ class Register extends Component {
                         returnKeyType={"next"}
                         underlineColorAndroid="transparent"
                         placeholderTextColor={colors.white}
-                        placeholder='Name'
+                        placeholder='Username'
                         placeholderTextColor={colors.darkGrey4}
                         style={styles.textInputAuth}
-                        onChangeText={name => this.setState({ name })}
+                        onChangeText={username => this.setState({ username })}
                         onSubmitEditing={() => Function.focusNextField(this, "2")}
-                        value={this.state.name}
+                        value={this.state.username}
                       />
                     </View>
                     <View style={styles.boxInputAuth}>
@@ -212,14 +212,8 @@ class Register extends Component {
     )
   }
 
-  // buttonPress() {
-  //   Function.Home(
-  //     this.props.navigation
-  //   )
-  // }
-
   valueChecker() {
-    if (this.state.name != '' &&
+    if (this.state.username != '' &&
       this.state.email != '' &&
       this.state.password != '' &&
       this.state.confirmPass != '' &&
@@ -227,8 +221,8 @@ class Register extends Component {
       return true
     }
     else {
-      if (this.state.name == '') {
-        Alert.alert('Error', 'Please fill name field', [{ text: 'Ok' }])
+      if (this.state.username == '') {
+        Alert.alert('Error', 'Please fill username field', [{ text: 'Ok' }])
         return false
       }
       else if (this.state.email == '') {
@@ -257,7 +251,7 @@ class Register extends Component {
     if (this.valueChecker() == true && this.state.visibleLoading == false) {
       this.setState({ visibleLoading: true })
       var dataPost = {
-        name: this.state.name,
+        username: this.state.username,
         email: this.state.email,
         password: this.state.password,
       }

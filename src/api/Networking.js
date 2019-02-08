@@ -75,7 +75,7 @@ async function Register(data) {
     Header.getHeaderNoToken(),
 
     JSON.stringify({
-      name: data.name,
+      username: data.username,
       email: data.email,
       password: data.password,
     }))
@@ -199,10 +199,7 @@ async function sendRound(dataPost) {
       data: JSON.stringify(dataPost)
     })
       .then((response) => {
-        console.log('response,.. ' + response);
-        console.log('response,.. ' + JSON.stringify(response));
         if (response.status < 300) {
-          console.log('success send in newtwork, '+ JSON.stringify(response))
           responseData = 'dataSend'
         } else {
           setTimeout(() => Alert.alert('error', JSON.stringify(response)), 100);
