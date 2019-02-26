@@ -369,11 +369,13 @@ export default StyleSheet.create({
   },
   containerBoxHorizontal: {
     width: width / 4,
-    height: 60,
+    // height: 60,
+    height: 40,
     backgroundColor: colors.black,
     borderRadius: 10,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: 10,
   },
   lineHeaderRHD: {
     borderBottomWidth: 1,
@@ -441,6 +443,12 @@ export default StyleSheet.create({
   iconBack: {
     width: 20,
     height: 20
+  },
+  subLittleBoxContainer: {
+    width: width - 40, 
+    flexDirection: 'row', 
+    flexWrap: 'wrap', 
+    marginLeft: ((width/4)-20)/2,
   },
 
   //EnterRound

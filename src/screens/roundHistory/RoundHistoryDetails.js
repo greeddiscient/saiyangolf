@@ -95,7 +95,7 @@ class RoundHistoryDetailsScreen extends React.Component {
                   />
                 </TouchableOpacity>
               </View>
-              <View style={{ height: 310, backgroundColor: colors.primary, marginBottom: 40 }}>
+              <View style={{ height: 320, backgroundColor: colors.primary, marginBottom: 40 }}>
                 <View style={{ width: width - 60, marginLeft: 30 }}>
                   <View style={{ flexDirection: 'row', paddingTop: 10 }}>
                     <View style={{ width: 100 }}>
@@ -147,26 +147,32 @@ class RoundHistoryDetailsScreen extends React.Component {
       { id: 2, name: 'Approach SG', value: this.state.dataDetail.approachSG },
       { id: 3, name: 'Wedge SG', value: this.state.dataDetail.wedgeSG },
       { id: 4, name: 'Chipping SG', value: this.state.dataDetail.chippingSG },
-      { id: 5, name: 'Putting SG', value: this.state.dataDetail.totalPuttingSG},
-      { id: 6, name: 'Total SG', value: this.state.dataDetail.totalSG},
+      { id: 5, name: 'Putting SG', value: this.state.dataDetail.totalPuttingSG },
+      { id: 6, name: 'Total SG', value: this.state.dataDetail.totalSG },
     ]
     var listBox = [];
     listData.map((data, i) => {
       listBox.push(
-        <View key={i} style={[styles.containerBoxHorizontal, { marginRight: data.id == 6 ? 20 : 10 }]}>
-          <Text style={styles.textTitleSmallBoxRHD}>{data.value}</Text>
-          <Text style={styles.textSmallBoxRHD}>{data.name}</Text>
+        <View key={i} style={[styles.containerBoxHorizontal, {
+          marginRight: data.id == 3 || data.id == 6 ? 0 : 10
+        }]}
+        >
+          <Text style={[styles.textTitleSmallBoxRHD, { fontSize: 14 }]}>{data.value}</Text>
+          <Text style={[styles.textSmallBoxRHD, { fontSize: 10 }]}>{data.name}</Text>
         </View>
       )
     })
     return (
-      <ScrollView
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        style={{ width: width - 20, marginLeft: 20, marginTop: 20 }}
-      >
+      <View style={styles.subLittleBoxContainer}>
         {listBox}
-      </ScrollView>
+      </View>
+      // <ScrollView
+      //   horizontal={true}
+      //   showsHorizontalScrollIndicator={false}
+      //   style={{ width: width - 20, marginLeft: 20, marginTop: 20 }}
+      // >
+      //   {listBox}
+      // </ScrollView>
     )
   }
 }

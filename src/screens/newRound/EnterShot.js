@@ -311,7 +311,8 @@ class EnterShot extends Component {
             style={[styles.subButtonSmall, {
               backgroundColor: this.state.offGreenPressStatus ? colors.primary : colors.darkGrey3, marginRight: 10
             }]}
-            onPress={this.touchOffGreen.bind(this)} >
+            onPress={this.state.offGreenPressStatus != true? this.touchOffGreen.bind(this) : null } 
+          >
             <Text style={[styles.textSubBoxES, { color: this.state.offGreenPressStatus ? colors.white : colors.darkGrey }]}>Off Green</Text>
           </TouchableOpacity>
           <TouchableOpacity

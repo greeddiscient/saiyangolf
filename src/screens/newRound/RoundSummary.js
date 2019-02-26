@@ -264,11 +264,11 @@ class RoundSummaryScreen extends React.Component {
         courseName: this.state.courseName,
       }
 
-      console.log('data send to server in round summary, '+JSON.stringify(dataSend))
+      console.log('data send to server in round summary, ' + JSON.stringify(dataSend))
 
       const response = await Networking.sendRound(dataSend)
       if (response == 'dataSend') {
-        console.log('success send first, '+ JSON.stringify(response))
+        console.log('success send first, ' + JSON.stringify(response))
         this.setState({
           refreshing: false,
           isLoading: false,
@@ -276,7 +276,7 @@ class RoundSummaryScreen extends React.Component {
           visibleSave: true
         });
       } else {
-        console.log('success send two, '+ JSON.stringify(response))
+        console.log('success send two, ' + JSON.stringify(response))
         this.setState({
           refreshing: false,
           isLoading: false,
@@ -328,15 +328,6 @@ class RoundSummaryScreen extends React.Component {
             </View>
           )
         })}
-
-        <View style={{ marginTop: 10, marginBottom: 20 }}>
-          <TouchableOpacity
-            style={styles.longButton}
-            onPress={this.saveRound.bind(this)}
-          >
-            <Text style={styles.textLongButton}>Save Round</Text>
-          </TouchableOpacity>
-        </View>
       </View>
     )
 
@@ -356,7 +347,7 @@ class RoundSummaryScreen extends React.Component {
                   />
                 </TouchableOpacity>
               </View>
-              <View style={{ height: 310, backgroundColor: colors.primary, marginBottom: 40 }}>
+              <View style={{ height: 320, backgroundColor: colors.primary, marginBottom: 40 }}>
                 <View style={{ width: width - 60, marginLeft: 30 }}>
                   <View style={{ flexDirection: 'row', paddingTop: 10 }}>
                     <View style={{ width: width - 60 }}>
@@ -390,6 +381,14 @@ class RoundSummaryScreen extends React.Component {
                   {rows}
                 </ScrollView>
               </Content>
+              <View style={{ height: 70, justifyContent: 'center', alignItems: 'center' }}>
+                <TouchableOpacity
+                  style={styles.longButton}
+                  onPress={this.saveRound.bind(this)}
+                >
+                  <Text style={styles.textLongButton}>Save Round</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           </SafeAreaView>
           <Modal
@@ -487,20 +486,19 @@ class RoundSummaryScreen extends React.Component {
     var listBox = [];
     listData.map((data, i) => {
       listBox.push(
-        <View key={i} style={[styles.containerBoxHorizontal, { marginRight: data.id == 6 ? 20 : 10 }]}>
-          <Text style={styles.textTitleSmallBoxRHD}>{data.value}</Text>
-          <Text style={styles.textSmallBoxRHD}>{data.name}</Text>
+        <View key={i} style={[styles.containerBoxHorizontal, {
+          marginRight: data.id == 3 || data.id == 6 ? 0 : 10
+        }]}
+        >
+          <Text style={[styles.textTitleSmallBoxRHD, { fontSize: 14 }]}>{data.value}</Text>
+          <Text style={[styles.textSmallBoxRHD, { fontSize: 10 }]}>{data.name}</Text>
         </View>
       )
     })
     return (
-      <ScrollView
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        style={{ width: width - 20, marginLeft: 20, marginTop: 20 }}
-      >
+      <View style={styles.subLittleBoxContainer}>
         {listBox}
-      </ScrollView>
+      </View>
     )
   }
 
