@@ -230,9 +230,50 @@ async function sendRound(dataPost) {
         }
       });
 
-      console.log('return response post, '+ responseData)
+    console.log('return response post, ' + responseData)
     return responseData;
 
+  }
+}
+
+async function getCurrentUser() {
+  var response = null;
+  var token = null;
+
+  await AsyncStorage.getItem('@saiyanGolfStore:tokens', (err, result) => {
+    if (result != null) {
+      token = result;
+    }
+  });
+
+  if (token != null && token != "") {
+    await RNFetchBlob.fetch(
+      'GET',
+      baseUrl + '/api/users/current',
+      Header.getHeaderToken(token)
+    )
+      .then((res) => {
+        // the following conversions are done in js, it's SYNC
+        let text = res.text()
+        let json = res.json()
+
+        if (res.info().status < 300) {
+          console.log('data user, '+text)
+          data = json;
+          AsyncStorage.setItem('@saiyanGolfStore:dataUser', JSON.stringify(data));
+          response = data;
+        }
+        else {
+          response = null
+        }
+      })
+      // Status code is not 200
+      .catch((errorMessage, statusCode) => {
+        // error handling
+        response = null;
+      })
+
+    return response
   }
 }
 
@@ -243,4 +284,5 @@ export default {
   Login,
   getDataRoundHistory,
   sendRound,
+  getCurrentUser
 }

@@ -70,7 +70,7 @@ class Login extends Component {
       if (this.state.tokens == null || this.state.tokens == "") {
         this.setState({ isLoading: false });
       } else {
-        this.renderHome()
+        this.checkUserLogin()
       }
     } catch (e) {
       setTimeout(() => this.setState({ isLoading: false }), 200);
@@ -244,6 +244,24 @@ class Login extends Component {
     })
 
     this.props.navigation.dispatch(resetAction)
+  }
+
+  async checkUserLogin() {
+    const response = await Networking.getCurrentUser()
+    if (response != null) {
+      console.log('success get user first, ' + JSON.stringify(response))
+      this.setState({
+        isLoading: false,
+      });
+      this.renderHome()
+    } else {
+      console.log('success get user two, ' + JSON.stringify(response))
+      setTimeout(() => Alert.alert('Info', 'Your session is ended. Please login again', [{ text: 'Ok' }]), 100);
+
+      this.setState({
+        isLoading: false,
+      });
+    }
   }
 
 }

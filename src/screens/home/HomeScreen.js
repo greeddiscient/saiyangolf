@@ -242,6 +242,7 @@ class HomeScreen extends Component {
     try {
       var key = [
         "@saiyanGolfStore:tokens",
+        "@saiyanGolfStore:dataUser"
       ];
       AsyncStorage.multiRemove(key, err => {
         if (err == null) {
