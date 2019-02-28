@@ -711,5 +711,58 @@ export default StyleSheet.create({
     paddingLeft: 20,
     fontFamily: fonts.custom.regularOs,
     fontSize: 16,
+  },
+
+  //Drill
+  containerBox: {
+    width: width-40,
+    height: 100,
+    flexDirection: 'row',
+    marginBottom: 20
+  },
+  smallBox: {
+    width: (width-60)/2,
+    height: 100,
+    backgroundColor: colors.white,
+    borderWidth: 0.5,
+    borderColor: "#ccc",
+    shadowColor: "grey",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.5,
+    elevation: 3,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  textSmallBoxDrill: {
+    color: colors.black,
+    fontFamily: fonts.custom.boldOs,
+    fontSize: 18
+  },
+
+  //DrillHistory
+  containerBoxDH: {
+    width: width-40,
+    height: 100,
+    flexDirection: 'row',
+    marginBottom: 20,
+    backgroundColor: colors.white,
+    borderWidth: 0.5,
+    borderColor: "#ccc",
+    shadowColor: "grey",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.5,
+    elevation: 3,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  containerButtonBottom: {
+    height: 70, 
+    justifyContent: 'center', 
+    alignItems: 'center',
+    backgroundColor: colors.white
   }
 });

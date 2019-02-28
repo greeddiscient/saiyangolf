@@ -36,6 +36,7 @@ import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
 import ImageUrl from '../../config/images';
 import Networking from '../../api/Networking';
+import Function from '../../utilities/Function';
 
 const { width, height } = Dimensions.get("window");
 class HomeScreen extends Component {
@@ -144,6 +145,12 @@ class HomeScreen extends Component {
               >
                 <Text style={styles.buttonNew}>+ Enter a new round</Text>
               </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.buttonNewRound}
+                onPress={() => this.onDrillPress()}
+              >
+                <Text style={styles.buttonNew}>Drill</Text>
+              </TouchableOpacity>
               <View style={styles.card}>
                 <View style={{ backgroundColor: colors.white, padding: 20, borderRadius: 10 }}>
                   <Text style={styles.textTitleHome}>Round History</Text>
@@ -236,6 +243,10 @@ class HomeScreen extends Component {
       // await this.setState({ rounds: [] })
       this.loadDataFromServer();
     }
+  }
+
+  onDrillPress() {
+    Function.Drill(this.props.navigation)
   }
 
   logoutButton() {

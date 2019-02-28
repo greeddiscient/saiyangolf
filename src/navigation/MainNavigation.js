@@ -23,6 +23,8 @@ import NewRoundScreen from '../screens/newRound/EnterRound';
 import RoundSummaryScreen from "../screens/newRound/RoundSummary";
 import RoundHistoryScreen from "../screens/roundHistory/RoundHistory";
 import RoundHistoryDetailScreen from "../screens/roundHistory/RoundHistoryDetails";
+import DrillScreen from '../screens/drill/DrillScreen';
+import DrillHistoryScreen from '../screens/drill/DrillHistory';
 import colors from '../config/colors';
 
 var loadMainScreen = false;
@@ -114,7 +116,9 @@ const Root = createStackNavigator(
     EnterRound: NewRoundScreen,
     RoundDetails: RoundSummaryScreen,
     RoundHistory: RoundHistoryScreen,
-    RoundHistoryDetails: RoundHistoryDetailScreen
+    RoundHistoryDetails: RoundHistoryDetailScreen,
+    Drill: DrillScreen,
+    DrillHistory: DrillHistoryScreen
   },
   {
     initialRouteName: 'Login',
