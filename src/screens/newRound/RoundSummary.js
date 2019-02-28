@@ -324,6 +324,7 @@ class RoundSummaryScreen extends React.Component {
               <Text style={styles.baseTextRS}>Score : {data.score}</Text>
               <Text style={styles.baseTextRS}>Putts : {data.putts}</Text>
               <Text style={styles.baseTextRS}>Putting SG : {data.puttingSG}</Text>
+              <Text style={styles.baseTextRS}>Putting Distance : {data.distancePutt}</Text>
               <Text style={styles.baseBoldTextRS}>TotalSG : {data.sg}</Text>
             </View>
           )
