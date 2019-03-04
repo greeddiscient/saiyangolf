@@ -44,7 +44,8 @@ class Login extends Component {
       password: '',
       tokens: null,
       isLoading: true,
-      visibleLoading: false
+      visibleLoading: false,
+      user: null
     };
 
     AsyncStorage.getItem(
@@ -248,19 +249,24 @@ class Login extends Component {
 
   async checkUserLogin() {
     const response = await Networking.getCurrentUser()
-    if (response != null) {
+    if (response == 'dataUser') {
       console.log('success get user first, ' + JSON.stringify(response))
+      this.setState({
+        isLoading: false
+      });
+      this.renderHome()
+    }
+    else if (response == 'noData') {
+      setTimeout(() => Alert.alert('Info', 'Your session is ended. Please login again', [{ text: 'Ok' }]), 100);
+      this.setState({
+        isLoading: false,
+      });
+    }
+    else {
       this.setState({
         isLoading: false,
       });
       this.renderHome()
-    } else {
-      console.log('success get user two, ' + JSON.stringify(response))
-      setTimeout(() => Alert.alert('Info', 'Your session is ended. Please login again', [{ text: 'Ok' }]), 100);
-
-      this.setState({
-        isLoading: false,
-      });
     }
   }
 

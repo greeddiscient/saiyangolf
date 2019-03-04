@@ -155,13 +155,12 @@ async function getDataRoundHistory() {
 
         if (res.info().status < 300) {
           if (json.success == true) {
-            data = json['data'];
+            var data = json['data'];
             AsyncStorage.setItem('@saiyanGolfStore:roundHistory', JSON.stringify(data));
             response = data;
           } else {
             response = null
           }
-
         }
         else {
           response = null
@@ -188,27 +187,26 @@ async function sendRound(dataPost) {
   });
 
   if (token != null && token != "") {
-    console.log('send data to server, ' + JSON.stringify(dataPost))
-    await axios({
-      method: "post",
-      url: `https://saiyan-api-v2.herokuapp.com/api/rounds/`,
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": token
-      },
-      data: JSON.stringify(dataPost)
-    })
-      .then((response) => {
-        if (response.status < 300) {
+    await RNFetchBlob.fetch(
+      'POST', baseUrl + '/api/rounds/', {
+        'Authorization': token,
+        'Content-Type': 'application/json'
+      }, JSON.stringify(dataPost))
+      .then((res) => {
+        let text = res.text();
+        let json = res.json();
+
+        if (res.info().status < 300) {
           responseData = 'dataSend'
         } else {
-          setTimeout(() => Alert.alert('error', JSON.stringify(response)), 100);
+          setTimeout(() => Alert.alert('error', json), 100);
           responseData = null
         }
       })
-      .catch((error) => {
-        console.log('error post, ' + error);
-        if (error == null || error == '') {
+      // Status code is not 200
+      .catch((errorMessage, statusCode) => {
+        // error handling
+        if (errorMessage == null || errorMessage == '') {
           setTimeout(() => Alert.alert(
             'Failed',
             'Something wrong. Please try again',
@@ -221,18 +219,16 @@ async function sendRound(dataPost) {
         else {
           setTimeout(() => Alert.alert(
             'Failed',
-            error.toString(),
+            errorMessage.toString(),
             [
               { text: 'Ok' },
             ]
           ), 100);
           responseData = null;
         }
-      });
+      })
 
-    console.log('return response post, ' + responseData)
     return responseData;
-
   }
 }
 
@@ -258,19 +254,37 @@ async function getCurrentUser() {
         let json = res.json()
 
         if (res.info().status < 300) {
-          console.log('data user, '+text)
-          data = json;
+          var data = json;
           AsyncStorage.setItem('@saiyanGolfStore:dataUser', JSON.stringify(data));
-          response = data;
+          response = 'dataUser';
         }
         else {
-          response = null
+          response = 'noData'
         }
       })
       // Status code is not 200
       .catch((errorMessage, statusCode) => {
         // error handling
-        response = null;
+        if (errorMessage == null || errorMessage == '') {
+          setTimeout(() => Alert.alert(
+            'Failed',
+            'Something wrong. Please try again',
+            [
+              { text: 'Ok' },
+            ]
+          ), 100);
+          response = null;
+        }
+        else {
+          setTimeout(() => Alert.alert(
+            'Failed',
+            errorMessage.toString(),
+            [
+              { text: 'Ok' },
+            ]
+          ), 100);
+          response = null;
+        }
       })
 
     return response

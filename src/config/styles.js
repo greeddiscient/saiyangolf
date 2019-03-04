@@ -744,7 +744,7 @@ export default StyleSheet.create({
   //DrillHistory
   containerBoxDH: {
     width: width-40,
-    height: 100,
+    // height: 100,
     flexDirection: 'row',
     marginBottom: 20,
     backgroundColor: colors.white,
@@ -756,13 +756,26 @@ export default StyleSheet.create({
     shadowRadius: 1.5,
     elevation: 3,
     borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center'
+    // justifyContent: 'center',
+    alignItems: 'center',
+    paddingLeft: 20,
+    paddingTop: 10,
+    paddingBottom: 10
   },
   containerButtonBottom: {
     height: 70, 
     justifyContent: 'center', 
     alignItems: 'center',
     backgroundColor: colors.white
+  },
+  textTitleListDH: {
+    color: colors.primary,
+    fontFamily: fonts.custom.boldOs,
+    fontSize: 16
+  },
+  textListDH: {
+    fontFamily: fonts.custom.regularOs,
+    fontSize: 14,
+    color: colors.black
   }
 });

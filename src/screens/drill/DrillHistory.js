@@ -35,11 +35,11 @@ class DrillHistoryScreen extends React.Component {
       isloading: true,
       data: props.navigation.state.params.data,
       dataHistory: [
-        { id: 1, name: 'History 1' },
-        { id: 2, name: 'History 2' },
-        { id: 3, name: 'History 3' },
-        { id: 4, name: 'History 4' },
-        { id: 5, name: 'History 5' },
+        { id: 1, name: 'Drill 1', date: '10 Sep 2018', time: '10:00', score: 100 },
+        { id: 2, name: 'Drill 2', date: '10 Sep 2018', time: '10:00', score: 100  },
+        { id: 3, name: 'Drill 3', date: '10 Sep 2018', time: '10:00', score: 100  },
+        { id: 4, name: 'Drill 4', date: '10 Sep 2018', time: '10:00', score: 100  },
+        { id: 5, name: 'Drill 5', date: '10 Sep 2018', time: '10:00', score: 100  },
       ]
     };
   }
@@ -64,14 +64,21 @@ class DrillHistoryScreen extends React.Component {
               <Content>
                 <View style={styles.containerSubHeader}>
                   <View style={styles.contentSubHeader}>
-                    <Text style={styles.textTitleHistoryBold}>{this.state.data} History</Text>
+                    <Text style={styles.textTitleHistoryBold}>{this.state.data} Drill</Text>
                   </View>
                 </View>
                 <View style={styles.contentBoxHistory}>
                   {this.state.dataHistory.map((data, i) => {
                     return (
                       <View key={i} style={styles.containerBoxDH}>
-                        <Text>{data.name}</Text>
+                        <View style={{flexDirection: 'column'}}>
+                          <Text style={styles.textTitleListDH}>{data.name}</Text>
+                          <View style={{marginTop: 10}}>
+                            <Text style={styles.textListDH}>Date: {data.date}</Text>
+                            <Text style={styles.textListDH}>Time: {data.time}</Text>
+                            <Text style={styles.textListDH}>Score: {data.score}</Text>
+                          </View>
+                        </View>
                       </View>
                     )
                   })
