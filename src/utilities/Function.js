@@ -24,6 +24,10 @@ async function DrillHistory(target, data) {
   await target.navigate('DrillHistory', {data: data})
 }
 
+async function NewDrillDetail(target, data) {
+  await target.navigate('NewDrillDetail', {data: data})
+}
+
 
 export default {
   focusNextField,
@@ -31,5 +35,6 @@ export default {
   Login,
   Home,
   Drill,
-  DrillHistory
+  DrillHistory,
+  NewDrillDetail
 }

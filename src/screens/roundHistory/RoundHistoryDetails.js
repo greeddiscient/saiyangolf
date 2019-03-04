@@ -166,13 +166,6 @@ class RoundHistoryDetailsScreen extends React.Component {
       <View style={styles.subLittleBoxContainer}>
         {listBox}
       </View>
-      // <ScrollView
-      //   horizontal={true}
-      //   showsHorizontalScrollIndicator={false}
-      //   style={{ width: width - 20, marginLeft: 20, marginTop: 20 }}
-      // >
-      //   {listBox}
-      // </ScrollView>
     )
   }
 }

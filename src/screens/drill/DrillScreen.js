@@ -21,6 +21,7 @@ import getTheme from '../../../native-base-theme/components';
 import material from '../../../native-base-theme/variables/material';
 import ImageUrl from '../../config/images';
 import Function from '../../utilities/Function';
+import jsonData from '../../data/drillData';
 
 class DrillScreen extends React.Component {
   constructor(props) {
@@ -54,51 +55,21 @@ class DrillScreen extends React.Component {
               <Content>
                 <View style={styles.containerSubHeader}>
                   <View style={styles.contentSubHeader}>
-                    <Text style={styles.textTitleHistoryBold}>Drill</Text>
+                    <Text style={styles.textTitleDrillScreen}>Drill</Text>
                   </View>
                 </View>
-                <View style={styles.contentBoxHistory}>
-                  <View style={styles.containerBox}>
-                    <TouchableOpacity 
-                      onPress={() => this.onDetailPress('Driving')}
-                      style={[styles.smallBox, {marginRight: 20}]}
-                    >
-                      <Text style={styles.textSmallBoxDrill}>Driving</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                      onPress={() => this.onDetailPress('Approach')}
-                      style={styles.smallBox}
-                    >
-                      <Text style={styles.textSmallBoxDrill}>Approach</Text>
-                    </TouchableOpacity >
-                  </View>
-                  <View style={styles.containerBox}>
-                    <TouchableOpacity 
-                      onPress={() => this.onDetailPress('Wedge Game')}
-                      style={[styles.smallBox, {marginRight: 20}]}
-                    >
-                      <Text style={styles.textSmallBoxDrill}>Wedge Game</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                      onPress={() => this.onDetailPress('Chipping')}
-                      style={styles.smallBox
-                    }>
-                      <Text style={styles.textSmallBoxDrill}>Chipping</Text>
-                    </TouchableOpacity>
-                  </View>
-                  <View style={styles.containerBox}>
-                    <TouchableOpacity 
-                      onPress={() => this.onDetailPress('Sand')}
-                      style={[styles.smallBox, {marginRight: 20}]}>
-                      <Text style={styles.textSmallBoxDrill}>Sand</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                      onPress={() => this.onDetailPress('Putting')}
-                      style={styles.smallBox}
-                    >
-                      <Text style={styles.textSmallBoxDrill}>Putting</Text>
-                    </TouchableOpacity>
-                  </View>
+                <View style={styles.contentBoxDrill}>
+                  {jsonData.dataDrill.map((data, i) => {
+                    return (
+                      <TouchableOpacity
+                        key={i}
+                        onPress={() => this.onDetailPress(data)}
+                        style={[styles.smallBox, { marginRight: i == 0 || i == 2 || i == 4 ? 20 : 0 }]}
+                      >
+                        <Text style={styles.textSmallBoxDrill}>{data.name}</Text>
+                      </TouchableOpacity>
+                    )
+                  })}
                 </View>
               </Content>
             </View>
@@ -111,7 +82,7 @@ class DrillScreen extends React.Component {
   onDetailPress(data) {
     Function.DrillHistory(this.props.navigation, data)
   }
-  
+
 }
 
 export default DrillScreen;

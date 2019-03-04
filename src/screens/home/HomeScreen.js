@@ -146,10 +146,10 @@ class HomeScreen extends Component {
                 <Text style={styles.buttonNew}>+ Enter a new round</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={styles.buttonNewRound}
+                style={styles.buttonDrill}
                 onPress={() => this.onDrillPress()}
               >
-                <Text style={styles.buttonNew}>Drill</Text>
+                <Text style={styles.textButtonDrill}>Drill</Text>
               </TouchableOpacity>
               <View style={styles.card}>
                 <View style={{ backgroundColor: colors.white, padding: 20, borderRadius: 10 }}>

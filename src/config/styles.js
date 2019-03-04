@@ -256,6 +256,22 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
+  buttonDrill: {
+    width: width - 40,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderColor: colors.black,
+    borderWidth: 2,
+    borderRadius: 25,
+    marginBottom: 20
+  },
+  textButtonDrill: {
+    color: colors.black,
+    fontFamily: fonts.custom.boldMs,
+    fontSize: 18,
+    fontWeight: 'bold'
+  },
 
   //RoundHistory
   cardHistory: {
@@ -718,7 +734,7 @@ export default StyleSheet.create({
     width: width-40,
     height: 100,
     flexDirection: 'row',
-    marginBottom: 20
+    marginBottom: 20,
   },
   smallBox: {
     width: (width-60)/2,
@@ -733,12 +749,25 @@ export default StyleSheet.create({
     elevation: 3,
     borderRadius: 10,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: 20
   },
   textSmallBoxDrill: {
     color: colors.black,
     fontFamily: fonts.custom.boldOs,
     fontSize: 18
+  },
+  contentBoxDrill: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    width: width - 40,
+    marginTop: -100,
+    marginLeft: 20
+  },
+  textTitleDrillScreen: {
+    fontSize: 25,
+    fontFamily: fonts.custom.boldMs,
+    fontWeight: 'bold'
   },
 
   //DrillHistory
@@ -777,5 +806,90 @@ export default StyleSheet.create({
     fontFamily: fonts.custom.regularOs,
     fontSize: 14,
     color: colors.black
-  }
+  },
+  boxTitleListDH: {
+    flexDirection: 'row', 
+    justifyContent: 'space-between',
+    marginBottom: 10
+  },
+  textTitleBoldDH: {
+    color: colors.black,
+    fontFamily: fonts.custom.boldOs,
+    fontSize: 14
+  },
+  containerSubHeaderDH: {
+    height: 270, 
+    backgroundColor: colors.primary, 
+    marginBottom: 40
+  },
+  containerButtonDH: {
+    marginBottom: 80, 
+    marginLeft: 20
+  },
+  boxDescriptionDH: {
+    width: width-80,
+    marginLeft: 40,
+    marginTop: 20, 
+    marginBottom: 20
+  },
+
+  //NewDrillDetailf
+  buttonSmallNDD: {
+    width: (width - 60) / 3,
+    borderRadius: 10,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 10
+  },
+  textDescription: {
+    fontFamily: fonts.custom.regularOs,
+    fontSize: 14,
+    color: colors.black
+  },
+  scoreContainerNDD: {
+    backgroundColor: colors.white,
+    paddingTop: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 20,
+    marginBottom: 20,
+    borderWidth: 0.5,
+    borderColor: "#ccc",
+    shadowColor: "grey",
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.5,
+    elevation: 3,
+    borderRadius: 10,
+    width: width - 40,
+    marginTop: 20
+  },
+  textInputNDD: {
+    height: 50,
+  },
+  containerSubBoxNDD: {
+    flexDirection: 'row',
+    backgroundColor: colors.white,
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderWidth: 0.5,
+    borderColor: "#ccc",
+    shadowColor: "grey",
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.5,
+    elevation: 3,
+    borderRadius: 10,
+    width: width - 100,
+    marginTop: 20,
+    alignItems: 'center'
+  },
+  textSubBoxES: {
+    fontSize: 12,
+    textAlign: 'center',
+    fontFamily: fonts.custom.regularOs,
+    marginLeft: 10,
+    marginRight: 10
+  },
 });

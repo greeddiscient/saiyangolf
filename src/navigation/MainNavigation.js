@@ -25,6 +25,7 @@ import RoundHistoryScreen from "../screens/roundHistory/RoundHistory";
 import RoundHistoryDetailScreen from "../screens/roundHistory/RoundHistoryDetails";
 import DrillScreen from '../screens/drill/DrillScreen';
 import DrillHistoryScreen from '../screens/drill/DrillHistory';
+import NewDrillDetailScreen from '../screens/drill/NewDrillDetail';
 import colors from '../config/colors';
 
 var loadMainScreen = false;
@@ -118,7 +119,8 @@ const Root = createStackNavigator(
     RoundHistory: RoundHistoryScreen,
     RoundHistoryDetails: RoundHistoryDetailScreen,
     Drill: DrillScreen,
-    DrillHistory: DrillHistoryScreen
+    DrillHistory: DrillHistoryScreen,
+    NewDrillDetail: NewDrillDetailScreen,
   },
   {
     initialRouteName: 'Login',
