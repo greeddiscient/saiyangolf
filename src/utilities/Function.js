@@ -20,12 +20,16 @@ async function Drill(target) {
   await target.navigate('Drill', {})
 }
 
-async function DrillHistory(target, data) {
-  await target.navigate('DrillHistory', {data: data})
+async function DrillDetail(target, data) {
+  await target.navigate('DrillDetail', {data: data})
 }
 
-async function NewDrillDetail(target, data) {
-  await target.navigate('NewDrillDetail', {data: data})
+async function NewDrillDetail(target, dataDetail, dataCompleted, data) {
+  await target.navigate('NewDrillDetail', {
+    dataDetail: dataDetail, 
+    dataCompleted: dataCompleted, 
+    data: data
+  })
 }
 
 
@@ -35,6 +39,6 @@ export default {
   Login,
   Home,
   Drill,
-  DrillHistory,
+  DrillDetail,
   NewDrillDetail
 }

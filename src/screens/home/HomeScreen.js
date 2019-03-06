@@ -71,43 +71,6 @@ class HomeScreen extends Component {
     }
   }
 
-  async loadDataFromServer() {
-    if (!this.state.refreshing) {
-      this.setState({ refreshing: true });
-
-      const response = await Networking.getDataRoundHistory()
-      if (response != null) {
-        let rounds = []
-        for (var i = 0; i < response.length; i++) {
-          rounds.push(response[i])
-        }
-
-        var sorted_round = rounds.sort((a, b) => {
-          return (
-            new Date(moment(a.roundDate).format('YYYY-MM-DD')).getTime() -
-            new Date(moment(b.roundDate).format('YYYY-MM-DD')).getTime()
-          )
-        }).reverse();
-
-        var finalSort = sorted_round.map((data, i) => {
-          return { ...data, roundNumber: sorted_round.length - i };
-        });
-
-        this.setState({
-          rounds: finalSort,
-          refreshing: false,
-          isloading: false,
-        });
-      } else {
-        this.setState({
-          refreshing: false,
-          isloading: false,
-        });
-      }
-    }
-  }
-
-
   render() {
     return (
       <StyleProvider style={getTheme(material)}>
@@ -122,9 +85,6 @@ class HomeScreen extends Component {
               colors={[colors.white, colors.white, colors.white]}
             />
           }>
-            {/* <View style={{height: 50, alignItems: 'flex-end'}}>
-            <Icon name='power-settings-new' style={{ marginRight: 10 }} />
-          </View> */}
             <View style={{ marginTop: 50, marginLeft: 40 }}>
               <Text style={styles.titleHeaderHome}>
                 Welcome back <Text style={styles.titleHeaderBoldHome}>golfers!</Text>
@@ -149,7 +109,7 @@ class HomeScreen extends Component {
                 style={styles.buttonDrill}
                 onPress={() => this.onDrillPress()}
               >
-                <Text style={styles.textButtonDrill}>Drill</Text>
+                <Text style={styles.textButtonDrill}>Let's Do Some Drills</Text>
               </TouchableOpacity>
               <View style={styles.card}>
                 <View style={{ backgroundColor: colors.white, padding: 20, borderRadius: 10 }}>
@@ -163,7 +123,7 @@ class HomeScreen extends Component {
                           direction="counter-clockwise"
                           color={colors.primary}
                         />
-                        :
+                      :
                         <Text style={[styles.textTitleInput, { marginTop: 20 }]}>No Data</Text>
                       }
                     </View>
@@ -213,7 +173,7 @@ class HomeScreen extends Component {
   }
 
   renderRow(rowData, sectionID, rowID) {
-    if (rowID < 1) {
+    if (parseInt(rowID) < 1) {
       return (
         <View style={{ marginBottom: 20 }}>
           <View style={[styles.boxSubTitleHistory, { marginTop: 20 }]}>
@@ -247,6 +207,42 @@ class HomeScreen extends Component {
 
   onDrillPress() {
     Function.Drill(this.props.navigation)
+  }
+
+  async loadDataFromServer() {
+    if (!this.state.refreshing) {
+      this.setState({ refreshing: true });
+
+      const response = await Networking.getDataRoundHistory()
+      if (response != null) {
+        let rounds = []
+        for (var i = 0; i < response.length; i++) {
+          rounds.push(response[i])
+        }
+
+        var sorted_round = rounds.sort((a, b) => {
+          return (
+            new Date(moment(a.roundDate).format('YYYY-MM-DD')).getTime() -
+            new Date(moment(b.roundDate).format('YYYY-MM-DD')).getTime()
+          )
+        }).reverse();
+
+        var finalSort = sorted_round.map((data, i) => {
+          return { ...data, roundNumber: sorted_round.length - i };
+        });
+
+        this.setState({
+          rounds: finalSort,
+          refreshing: false,
+          isloading: false,
+        });
+      } else {
+        this.setState({
+          refreshing: false,
+          isloading: false,
+        });
+      }
+    }
   }
 
   logoutButton() {

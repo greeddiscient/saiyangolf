@@ -24,7 +24,7 @@ import RoundSummaryScreen from "../screens/newRound/RoundSummary";
 import RoundHistoryScreen from "../screens/roundHistory/RoundHistory";
 import RoundHistoryDetailScreen from "../screens/roundHistory/RoundHistoryDetails";
 import DrillScreen from '../screens/drill/DrillScreen';
-import DrillHistoryScreen from '../screens/drill/DrillHistory';
+import DrillDetailScreen from '../screens/drill/DrillDetail';
 import NewDrillDetailScreen from '../screens/drill/NewDrillDetail';
 import colors from '../config/colors';
 
@@ -119,7 +119,7 @@ const Root = createStackNavigator(
     RoundHistory: RoundHistoryScreen,
     RoundHistoryDetails: RoundHistoryDetailScreen,
     Drill: DrillScreen,
-    DrillHistory: DrillHistoryScreen,
+    DrillDetail: DrillDetailScreen,
     NewDrillDetail: NewDrillDetailScreen,
   },
   {

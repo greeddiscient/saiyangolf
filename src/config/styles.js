@@ -261,13 +261,12 @@ export default StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: colors.black,
-    borderWidth: 2,
+    backgroundColor: colors.orangePrimary,
     borderRadius: 25,
     marginBottom: 20
   },
   textButtonDrill: {
-    color: colors.black,
+    color: colors.white,
     fontFamily: fonts.custom.boldMs,
     fontSize: 18,
     fontWeight: 'bold'
@@ -441,19 +440,19 @@ export default StyleSheet.create({
     fontFamily: fonts.custom.regularOs,
   },
   containerSubHeader: {
-    height: 120, 
-    backgroundColor: colors.primary, 
+    height: 120,
+    backgroundColor: colors.primary,
     marginBottom: 40
   },
   contentSubHeader: {
-    flex: 1, 
-    flexDirection: 'column', 
-    paddingTop: 10, 
+    flex: 1,
+    flexDirection: 'column',
+    paddingTop: 10,
     marginLeft: 40
   },
   containerBoxHeader: {
-    flex: 1, 
-    backgroundColor: colors.white, 
+    flex: 1,
+    backgroundColor: colors.white,
     overflow: "hidden"
   },
   iconBack: {
@@ -461,18 +460,20 @@ export default StyleSheet.create({
     height: 20
   },
   subLittleBoxContainer: {
-    width: width - 40, 
-    flexDirection: 'row', 
-    flexWrap: 'wrap', 
-    marginLeft: ((width/4)-20)/2,
+    width: width - 40,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginLeft: ((width / 4) - 20) / 2,
+  },
+  lineGrey: {
+    borderBottomColor: colors.lightGrey1,
+    borderBottomWidth: 1
   },
 
   //EnterRound
   headerContainerER: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // alignItems: 'center',
-    // height: 50,
     paddingLeft: 20,
     paddingRight: 20,
   },
@@ -523,11 +524,10 @@ export default StyleSheet.create({
     marginTop: 10,
     justifyContent: 'space-around',
     alignItems: 'center'
-    // alignItems: 'flex-start',
   },
   iconLieES: {
-    width: 25, 
-    height: 25, 
+    width: 25,
+    height: 25,
     marginRight: 5
   },
   contentButtonSmallES: {
@@ -621,13 +621,13 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   imageModalGolfer: {
-    width: (width - (width / 3)), 
+    width: (width - (width / 3)),
     height: (height / 2) + 30
   },
   containerImageModalRS: {
-    width: width, 
-    height: (height / 2) + 30, 
-    alignItems: 'flex-end', 
+    width: width,
+    height: (height / 2) + 30,
+    alignItems: 'flex-end',
     marginTop: 20
   },
   textSubTitleModalRS: {
@@ -636,28 +636,28 @@ export default StyleSheet.create({
     textAlign: 'center'
   },
   containerModalRS: {
-    width: width-30, 
-    borderRadius:10, 
-    justifyContent:'center', 
-    alignItems:'center'
+    width: width - 30,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   containerContentModalRS: {
-    marginTop:20, 
-    flexDirection: 'column', 
-    justifyContent:'center', 
-    alignItems:'center'
+    marginTop: 20,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   boxTwoModalRS: {
-    flexDirection:'row', 
-    justifyContent: 'center', 
-    marginTop: 30, 
-    marginBottom:20
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 30,
+    marginBottom: 20
   },
   buttonModalRS: {
-    width: 100, 
-    height: 40, 
-    justifyContent: 'center', 
-    alignItems: 'center', 
+    width: 100,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: colors.primary
   },
 
@@ -716,12 +716,10 @@ export default StyleSheet.create({
     fontWeight: 'bold'
   },
   styleBgImage: {
-    width: width, 
-    // height: height+90, 
-    height: height+20,
+    width: width,
+    height: height + 20,
     position: 'absolute',
     overflow: 'hidden',
-    // backgroundColor: colors.white
   },
   textInputAuth: {
     paddingLeft: 20,
@@ -731,13 +729,13 @@ export default StyleSheet.create({
 
   //Drill
   containerBox: {
-    width: width-40,
+    width: width - 40,
     height: 100,
     flexDirection: 'row',
     marginBottom: 20,
   },
   smallBox: {
-    width: (width-60)/2,
+    width: (width - 60) / 2,
     height: 100,
     backgroundColor: colors.white,
     borderWidth: 0.5,
@@ -772,8 +770,7 @@ export default StyleSheet.create({
 
   //DrillHistory
   containerBoxDH: {
-    width: width-40,
-    // height: 100,
+    width: width - 40,
     flexDirection: 'row',
     marginBottom: 20,
     backgroundColor: colors.white,
@@ -785,15 +782,14 @@ export default StyleSheet.create({
     shadowRadius: 1.5,
     elevation: 3,
     borderRadius: 10,
-    // justifyContent: 'center',
     alignItems: 'center',
     paddingLeft: 20,
     paddingTop: 10,
     paddingBottom: 10
   },
   containerButtonBottom: {
-    height: 70, 
-    justifyContent: 'center', 
+    height: 70,
+    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.white
   },
@@ -808,7 +804,7 @@ export default StyleSheet.create({
     color: colors.black
   },
   boxTitleListDH: {
-    flexDirection: 'row', 
+    flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 10
   },
@@ -818,22 +814,22 @@ export default StyleSheet.create({
     fontSize: 14
   },
   containerSubHeaderDH: {
-    height: 270, 
-    backgroundColor: colors.primary, 
+    height: 270,
+    backgroundColor: colors.primary,
     marginBottom: 40
   },
   containerButtonDH: {
-    marginBottom: 80, 
+    marginBottom: 80,
     marginLeft: 20
   },
   boxDescriptionDH: {
-    width: width-80,
+    width: width - 80,
     marginLeft: 40,
-    marginTop: 20, 
+    marginTop: 20,
     marginBottom: 20
   },
 
-  //NewDrillDetailf
+  //NewDrillDetail
   buttonSmallNDD: {
     width: (width - 60) / 3,
     borderRadius: 10,
@@ -881,15 +877,129 @@ export default StyleSheet.create({
     shadowRadius: 1.5,
     elevation: 3,
     borderRadius: 10,
-    width: width - 100,
-    marginTop: 20,
+    width: width - 40,
+    marginLeft: 20,
+    marginTop: -70,
     alignItems: 'center'
   },
-  textSubBoxES: {
+  textSubBoxNDD: {
     fontSize: 12,
     textAlign: 'center',
     fontFamily: fonts.custom.regularOs,
     marginLeft: 10,
     marginRight: 10
+  },
+  containerSubHeaderNDD: {
+    height: 250,
+    backgroundColor: colors.primary,
+    paddingLeft: 20,
+    paddingRight: 20,
+    marginBottom: 40
+  },
+  contentSubHeaderNDD: {
+    flex: 1,
+    flexDirection: 'column',
+    paddingTop: 10,
+    marginLeft: 20
+  },
+  boxDescriptionNDD: {
+    width: width - 80,
+    marginLeft: 20,
+    marginTop: 20,
+    marginBottom: 20
+  },
+  lineHeaderNDD: {
+    borderBottomWidth: 1,
+    borderBottomColor: colors.black,
+    marginTop: 10,
+    marginLeft: 20,
+    marginRight: 20
+  },
+  contentSubHeaderBoxNDD: {
+    paddingTop: 20,
+    paddingBottom: 20,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 30
+  },
+  textSubHeaderBoldNDD: {
+    color: colors.black,
+    fontFamily: fonts.custom.boldOs,
+    fontSize: 14
+  },
+  containerBoxSaveNDD: {
+    width: 60,
+    backgroundColor: colors.black,
+    height: 50,
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  boxInputNDD: {
+    flexDirection: 'row',
+    width: width - 100,
+    alignItems: 'center',
+    paddingRight: 10
+  },
+  textBoxSaveNDD: {
+    color: colors.white,
+    fontFamily: fonts.custom.boldOs,
+    fontSize: 14
+  },
+  textTitleBoxNDD: {
+    fontFamily: fonts.custom.regularOs,
+    fontSize: 14,
+    color: colors.black
+  },
+
+  //DrillDetail
+  boxTitleListDD: {
+    height: 50,
+    width: width - 40,
+    backgroundColor: colors.black,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    paddingLeft: 10,
+    justifyContent: 'center'
+  },
+  boxListDD: {
+    height: 50,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingLeft: 10,
+    paddingRight: 10
+  },
+  textTitleListDD: {
+    color: colors.white,
+    fontFamily: fonts.custom.boldOs,
+    fontSize: 16
+  },
+  containerBoxDD: {
+    width: width - 40,
+    height: 100,
+    flexDirection: 'row',
+    marginBottom: 20,
+    backgroundColor: colors.white,
+    borderWidth: 0.5,
+    borderColor: "#ccc",
+    shadowColor: "grey",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.5,
+    elevation: 3,
+    borderRadius: 10,
+    alignItems: 'center',
+  },
+  contentBoxDD: {
+    width: width - 40,
+    marginTop: -100,
+    marginLeft: 20
+  },
+  containerSubHeaderDD: {
+    height: 150,
+    backgroundColor: colors.primary,
+    marginBottom: 40
   },
 });

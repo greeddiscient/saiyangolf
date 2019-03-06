@@ -15,5 +15,6 @@ export default {
   lightGrey2: '#f5f5f5',
   darkGrey: '#676767',
   red: '#f51c12',
+  orangePrimary: '#FF8105'
 };
 
