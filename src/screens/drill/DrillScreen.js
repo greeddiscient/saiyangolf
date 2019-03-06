@@ -13,7 +13,6 @@ import {
   Content,
   StyleProvider,
 } from 'native-base';
-import * as Progress from 'react-native-progress';
 
 import colors from '../../config/colors';
 import styles from '../../config/styles';
@@ -31,7 +30,6 @@ class DrillScreen extends React.Component {
       saveWidth: width,
       saveHeight: height,
       refreshing: false,
-      isloading: true,
     };
   }
 
@@ -80,7 +78,7 @@ class DrillScreen extends React.Component {
   }
 
   onDetailPress(data) {
-    Function.DrillHistory(this.props.navigation, data)
+    Function.DrillDetail(this.props.navigation, data)
   }
 
 }

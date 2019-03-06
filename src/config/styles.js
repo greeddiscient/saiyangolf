@@ -938,7 +938,7 @@ export default StyleSheet.create({
   },
   boxInputNDD: {
     flexDirection: 'row',
-    width: width - 100,
+    width: width - 110,
     alignItems: 'center',
     paddingRight: 10
   },
@@ -951,6 +951,13 @@ export default StyleSheet.create({
     fontFamily: fonts.custom.regularOs,
     fontSize: 14,
     color: colors.black
+  },
+  containerEmptyDataRH: {
+    width: width - 40,
+    // height: height,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   //DrillDetail

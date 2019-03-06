@@ -85,9 +85,11 @@ class DrillDetailScreen extends React.Component {
                 <View style={styles.contentBoxDD}>
                   {this.state.data.type.map((data, i) => {
                     var dataCompleted = 0;
+                    var dataAverage = 0;
                     for (let i = 0; i < this.state.dataSource.length; i++) {
                       if (data.id == this.state.dataSource[i]._id.typeId) {
-                        dataCompleted = this.state.dataSource[i].count
+                        dataCompleted = this.state.dataSource[i].count;
+                        dataAverage = this.state.dataSource[i].average;
                       }
                     }
 
@@ -95,7 +97,7 @@ class DrillDetailScreen extends React.Component {
                       <TouchableOpacity
                         key={i}
                         style={styles.containerBoxDD}
-                        onPress={() => this.newDrillDetail(data, dataCompleted)}
+                        onPress={() => this.newDrillDetail(data, dataCompleted, dataAverage)}
                       >
                         <View style={{ flexDirection: 'column' }}>
                           <View style={styles.boxTitleListDD}>
@@ -109,7 +111,7 @@ class DrillDetailScreen extends React.Component {
                             </View>
                             <View>
                               <Text style={styles.textTitleBoldDH}>
-                                Avg Score: {dataCompleted}/{data.total}
+                                Avg Score: {dataAverage != null ? dataAverage.toFixed(2) : 0}/{data.total}
                               </Text>
                             </View>
                           </View>
@@ -132,11 +134,12 @@ class DrillDetailScreen extends React.Component {
     );
   }
 
-  newDrillDetail(dataDetail, dataCompleted) {
+  newDrillDetail(dataDetail, dataCompleted, dataAverage) {
     Function.NewDrillDetail(
       this.props.navigation,
       dataDetail,
       dataCompleted,
+      dataAverage,
       this.state.data
     )
   }

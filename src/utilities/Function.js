@@ -24,10 +24,11 @@ async function DrillDetail(target, data) {
   await target.navigate('DrillDetail', {data: data})
 }
 
-async function NewDrillDetail(target, dataDetail, dataCompleted, data) {
+async function NewDrillDetail(target, dataDetail, dataCompleted, dataAverage, data) {
   await target.navigate('NewDrillDetail', {
     dataDetail: dataDetail, 
     dataCompleted: dataCompleted, 
+    dataAverage: dataAverage,
     data: data
   })
 }
