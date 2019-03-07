@@ -103,7 +103,7 @@ class RoundSummaryScreen extends React.Component {
       else if (roundSummary[i].par == 4 && roundSummary[i].shots[1].lie == "F") {
         fairways += 1
       }
-      else if (roundSummary[i].par == 5 && roundSummary[i].shots[1].lie == "F") {
+      else if (roundSummary[i].par == 5 && (roundSummary[i].shots[1] != null && roundSummary[i].shots[1].lie != null && roundSummary[i].shots[1].lie == "F")) {
         fairways += 1
       }
     }
