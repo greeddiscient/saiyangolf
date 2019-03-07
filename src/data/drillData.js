@@ -66,9 +66,9 @@ const dataDrill = [
     name: 'Putting',
     description: 'Putt to a hole 30/45/60 feet out. +1 point if ball lands within a 3/4.5/6 feet radius.',
     type: [
-      {id: 1, name: 'Lag put 60 feet', completed: 2, total: 10, description: 'Putt to a hole 60 feet out. +1 point if ball lands within a 6 feet radius.'},
-      {id: 2, name: 'Lag put 45 feet', completed: 2, total: 10, description: 'Putt to a hole 45 feet out. +1 point if ball lands within a 4.5 feet radius.'},
-      {id: 3, name: 'Lag put 30 feet', completed: 2, total: 10, description: 'Putt to a hole 30 feet out. +1 point if ball lands within a 3 feet radius.'},
+      {id: 1, name: 'Lag putt 60 feet', completed: 2, total: 10, description: 'Putt to a hole 60 feet out. +1 point if ball lands within a 6 feet radius.'},
+      {id: 2, name: 'Lag putt 45 feet', completed: 2, total: 10, description: 'Putt to a hole 45 feet out. +1 point if ball lands within a 4.5 feet radius.'},
+      {id: 3, name: 'Lag putt 30 feet', completed: 2, total: 10, description: 'Putt to a hole 30 feet out. +1 point if ball lands within a 3 feet radius.'},
       {id: 4, name: '15 feet putt', completed: 2, total: 10, description: 'Putt to a hole 15 feet out. +1 point for made putt'},
       {id: 5, name: '50 3 footers in a row!', completed: 2, total: 50, description: 'Make 50 3 footers in a row to boost your confidence'},
       {id: 6, name: 'Cross drill minimal break', completed: 2, total: 20, description: 'Putt in a cross shape at each side for 3,4,5,6,9 ft putts for a hole that doesnt break that much. +1 point for made putt'},

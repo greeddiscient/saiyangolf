@@ -79,7 +79,7 @@ class NewDrillDetail extends React.Component {
               <Content>
                 <View style={styles.containerSubHeaderNDD}>
                   <View style={styles.contentSubHeaderNDD}>
-                    <Text style={styles.textTitleHistoryBold}>{this.state.data.name} Drill</Text>
+                    <Text style={styles.textTitleHistoryBold}>{this.state.dataDetail.name}</Text>
                   </View>
                   <View style={styles.boxDescriptionNDD}>
                     <Text style={styles.textDescription}>{this.state.dataDetail.description}</Text>
