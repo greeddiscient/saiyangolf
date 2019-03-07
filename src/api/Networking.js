@@ -86,19 +86,20 @@ async function Register(data) {
 
       if (res.info().status < 300) {
         if (json.success == true) {
-          AsyncStorage.setItem('@saiyanGolfStore:register', json['data']);
-          response = json.userCreated;
+          // AsyncStorage.setItem('@saiyanGolfStore:register', json);
+          AsyncStorage.setItem('@saiyanGolfStore:tokens', json['token']);
+          response = 'registered';
         } else {
-          setTimeout(() => Alert.alert('error', json), 100);
+          setTimeout(() => Alert.alert('Info', json.errors.users), 100);
           response = null;
         }
       }
       else {
         if (json.success == true) {
-          setTimeout(() => Alert.alert('error', json), 100);
+          setTimeout(() => Alert.alert('Info', json.errors.users), 100);
           response = null;
         } else {
-          setTimeout(() => Alert.alert('error', JSON.stringify(json)), 100);
+          setTimeout(() => Alert.alert('Info', json.errors.users), 100);
           response = null;
         }
       }

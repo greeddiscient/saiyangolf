@@ -266,12 +266,14 @@ class Register extends Component {
 
         Alert.alert("Success", "Member is successfully registered.", [
           {
-            text: "Ok", onPress: () => {
-              this.props.navigation.goBack()
+            text: "Ok", 
+            onPress: () => {
+              this.renderHome()
+              // this.props.navigation.goBack()
             }
           },
         ]);
-        // this.renderHome()
+        
         
       } else {
         this.setState({ visibleLoading: false })

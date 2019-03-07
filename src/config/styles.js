@@ -952,12 +952,12 @@ export default StyleSheet.create({
     fontSize: 14,
     color: colors.black
   },
-  containerEmptyDataRH: {
+  containerEmptyDataNDD: {
     width: width - 40,
     // height: height,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
+    // justifyContent: 'center',
   },
 
   //DrillDetail
