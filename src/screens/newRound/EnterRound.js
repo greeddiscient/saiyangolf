@@ -48,7 +48,8 @@ class EnterRoundScreen extends React.Component {
       hazard: 0,
       isModalVisible: false,
       // holeNumber: props.holeNumber != null ? props.holeNumber : 1,
-      distancePutt: 0
+      distancePutt: 0,
+      statusRestart: 0
     };
   }
 
@@ -89,7 +90,8 @@ class EnterRoundScreen extends React.Component {
       noOfPutts: '',
       onGreen: false,
       holeFinished: false,
-      hazard: 0
+      hazard: 0,
+      statusRestart: 1,
     })
   }
 
@@ -107,6 +109,10 @@ class EnterRoundScreen extends React.Component {
     this.setState({ onGreen: bool })
   }
 
+  setStatusRestart(status){
+    this.setState({statusRestart: status})
+  }
+
   renderShots() {
     var rows = []
     shots = this.state.shots
@@ -120,6 +126,8 @@ class EnterRoundScreen extends React.Component {
             addShots={this.addShots.bind(this)}
             shotNumber={i + 1}
             addHazard={this.addHazard.bind(this)}
+            statusRestart={this.state.statusRestart}
+            setStatusRestart={this.setStatusRestart.bind(this)}
           />
         )
       }
@@ -134,6 +142,8 @@ class EnterRoundScreen extends React.Component {
             addShots={this.addShots.bind(this)}
             shotNumber={i + 1}
             addHazard={this.addHazard.bind(this)}
+            statusRestart={this.state.statusRestart}
+            setStatusRestart={this.setStatusRestart.bind(this)}
           />
         )
       }

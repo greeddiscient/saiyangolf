@@ -41,6 +41,28 @@ class EnterShot extends Component {
     };
   }
 
+  componentWillReceiveProps(props) {
+    const { statusRestart } = this.props;
+    if (props.statusRestart == 1) {
+      console.log('refresh')
+      if (this.state.shotNumber === 1) {
+        this.setState({
+          lie: 'T',
+          teePressStatus: true,
+          fairwayPressStatus: false,
+          roughPressStatus: false,
+          sandPressStatus: false,
+          hazardPressStatus: false,
+          obPressStatus: false,
+          inHolePressStatus: false,
+          onGreenPressStatus: false,
+          offGreenPressStatus: false,
+        })
+        this.props.setStatusRestart(0)
+      }
+    }
+  }
+
   componentDidMount() {
     if (this.state.shotNumber === 1) {
       this.setState({
@@ -311,7 +333,7 @@ class EnterShot extends Component {
             style={[styles.subButtonSmall, {
               backgroundColor: this.state.offGreenPressStatus ? colors.primary : colors.darkGrey3, marginRight: 10
             }]}
-            onPress={this.state.offGreenPressStatus != true? this.touchOffGreen.bind(this) : null } 
+            onPress={this.state.offGreenPressStatus != true ? this.touchOffGreen.bind(this) : null}
           >
             <Text style={[styles.textSubBoxES, { color: this.state.offGreenPressStatus ? colors.white : colors.darkGrey }]}>Off Green</Text>
           </TouchableOpacity>
