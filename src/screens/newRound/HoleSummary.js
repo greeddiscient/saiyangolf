@@ -139,7 +139,7 @@ class HoleSummary extends Component {
       rows.push(
         <View key={i} style={{ flexDirection: 'row' }}>
           <Text style={[styles.baseBoldText, { color: colors.black }]}>Shot {i + 1} {shots[i + 1].lie}{shots[i + 1].distance} SG: </Text>
-          <Text style={[styles.baseText, { color: colors.black }]}>{sgArray[i]}</Text>
+          <Text style={[styles.baseText, { color: colors.black }]}>{(isNaN(sgArray[i]) ? 0 : sgArray[i])}</Text>
         </View>
       )
     }
@@ -147,19 +147,19 @@ class HoleSummary extends Component {
     rows.push(
       <View key={"DrivingDistance"} style={{ flexDirection: 'row' }}>
         <Text style={[styles.baseBoldText, { color: colors.black }]}>Driving Distance :  </Text>
-        <Text style={[styles.baseText, { color: colors.black }]}>{this.state.drivingDistance}</Text>
+        <Text style={[styles.baseText, { color: colors.black }]}>{(isNaN(this.state.drivingDistance) ? 0 : this.state.drivingDistance)}</Text>
       </View>
     )
     rows.push(
       <View key={"PuttingSG"} style={{ flexDirection: 'row' }}>
         <Text style={[styles.baseBoldText, { color: colors.black }]}>Putting G{this.state.puttDistance} {this.state.putts}putt SG : </Text>
-        <Text style={[styles.baseText, { color: colors.black }]}>{sgArray[sgArray.length - 2]}</Text>
+        <Text style={[styles.baseText, { color: colors.black }]}>{(isNaN(sgArray[sgArray.length - 2]) ? 0 : sgArray[sgArray.length - 2] )}</Text>
       </View>
     )
     rows.push(
       <View key={"TotalSG"} style={{ flexDirection: 'row' }}>
         <Text style={[styles.baseBoldText, { color: colors.black }]}>Total SG : </Text>
-        <Text style={[styles.baseBoldText, { color: colors.black }]}>{sgArray[sgArray.length - 1]}</Text>
+        <Text style={[styles.baseBoldText, { color: colors.black }]}>{(isNaN(sgArray[sgArray.length - 1]) ? 0 : sgArray[sgArray.length - 1])}</Text>
       </View>
     )
 
@@ -234,7 +234,7 @@ class HoleSummary extends Component {
           <View style={{ flexDirection: 'row', marginTop: 20 }}>
             <Text style={[styles.baseBoldText, { color: colors.black }]}>Score : </Text>
             <Text style={[styles.baseText, { color: colors.black }]}>
-              {this.state.score}
+              {(isNaN(this.state.score) ? 0 : this.state.score)}
             </Text>
           </View>
           {this.renderStrokesGained()}
